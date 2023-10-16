@@ -1,4 +1,4 @@
-# Атмосферни дистанционни изследвания
+![image](https://github.com/PowerCell46/Sofia-University/assets/116914391/33d56659-3f49-49a5-92ad-437154e50c16)![image](https://github.com/PowerCell46/Sofia-University/assets/116914391/3ff9422e-0b8c-4950-ac6c-59011832ff06)# Атмосферни дистанционни изследвания
 - Mултидисциплинарна област, която изучава земната атмосфера и различните физични процеси в нея. 
 
 
@@ -22,7 +22,7 @@
  - **Радар (radio detection and ranging)** е друга техника за дистанционно наблюдение, която използва радиовълни за измерване на разстоянието до обекти. Радарът често се използва за изучаване на метеорологични явления като валежи, гръмотевични бури и урагани.
 
 <p align="center">
-  <img src="https://www.eol.ucar.edu/sites/default/files/files_live/private/DSC00758.JPG " />
+  <img src="https://www.eol.ucar.edu/sites/default/files/files_live/private/DSC00758.JPG" />
 </p>
 
 #### Наземни измервания
