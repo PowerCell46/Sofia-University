@@ -1,7 +1,6 @@
-
 use ships
 
-/*
+	
 SELECT name 
 FROM ships
 JOIN classes ON classes.class = ships.class
@@ -16,7 +15,7 @@ FROM OUTCOMES
 	JOIN ships ON outcomes.ship = ships.name
 	JOIN classes ON ships.CLASS = classes.class
  WHERE battle = 'Guadalcanal';
-*/
+
 
 SELECT 
 	*
@@ -33,8 +32,13 @@ HAVING MAX(OUTCOMES.result) = 'sunk'
 ORDER BY battles.name;
 
 
-SELECT ship
+SELECT * 
 FROM OUTCOMES
-GROUP BY ship
-HAVING SUM(CASE WHEN result = 'sunk' THEN 1 ELSE 0 END) > 0;
+	JOIN BATTLES ON BATTLES.name = OUTCOMES.battle
+WHERE ship IN (
 /* All ships that have been sunk */
+	SELECT ship
+    FROM OUTCOMES
+    GROUP BY ship
+    HAVING SUM(CASE WHEN result = 'sunk' THEN 1 ELSE 0 END) > 0)
+ORDER BY ship;
