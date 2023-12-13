@@ -1,0 +1,17 @@
+USE PC;
+
+INSERT INTO PRODUCT
+VALUES ('C', 1100, 'PC');
+
+INSERT INTO PC(code, model, speed, ram, hd, cd, price)
+VALUES 
+	(12, 1100, 2400, 2048, 500, 52, 299);
+
+
+USE PC;
+
+DELETE FROM PC 
+	WHERE model = 1100;
+
+DELETE FROM PRODUCT
+	WHERE model = 1100;
