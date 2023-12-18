@@ -71,9 +71,19 @@ class Address:
     def __repr__(self):
         return f'Address Name: {self.name}.\n{self.geo_coord}'
 
+    def info(self) -> str:
+        return self.__repr__()
+
 
 burgasPoint = GeoPoint(42.510578, 27.461014, 'Burgas Point')
 # print(burgasPoint)
 
 Burgas = Address(burgasPoint, 'Burgas')
-# print(Burgas)
+# print(Burgas.info())
+
+
+rusePoint = GeoPoint(43.835571, 25.965654, 'Ruse Point')
+# print(rusePoint)
+
+Ruse = Address(rusePoint, 'Ruse')
+# print(Ruse.info())
