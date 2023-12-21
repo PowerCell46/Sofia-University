@@ -1,5 +1,5 @@
 class Animal:
-    def __init__(self, type: str, name: str, age: int, price: float):
+    def __init__(self, type: str, name: str, age: int, price: float) -> None:
         self.type = type
         self.name = name
         self.age = age
@@ -11,7 +11,7 @@ class Animal:
         return self._price
 
     @price.setter
-    def price(self, value:float):
+    def price(self, value: float):
         if value > 0:
             self._price = value
         else:
@@ -28,18 +28,20 @@ class Animal:
     def __str__(self) -> str:
         return f'{self.name} of Type "{self.type}" is {self.age} years old and costs {self.price:.2f} BGN.'
 
-    def showcase(self):
+    def showcase(self) -> str:
         return self.__str__()
 
 
 cat = Animal('Cat', 'Sharo', 8, 50)
-cat.christmas_discount(3)
+# cat.christmas_discount(3)
+
 dog = Animal('Dog', 'Raffy', 3, 150)
+
 salamander = Animal('Salamander', 'Fluffy', 1, 300)
 
 
 class BasePetShop:
-    def __init__(self, name: str, location: str, pets: [Animal]):
+    def __init__(self, name: str, location: str, pets: [Animal]) -> None:
         self.name = name
         self.location = location
         self.pets = pets
@@ -58,7 +60,7 @@ class BasePetShop:
         else:
             return f'No such pet found in the {self.name}!'
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         pets = "\n  ".join([p.showcase() for p in self.pets])
         return f'{self.name} located at {self.location} with income of {self.income} BGN.\nAvailable Pets in the Store:\n  {pets}'
 
@@ -81,7 +83,7 @@ def write_in_file(filename: str, message: str) -> None:
 
 
 class PetShop(BasePetShop):
-    def __init__(self, name: str, location: str, pets: [Animal], space: int, slogan: str):
+    def __init__(self, name: str, location: str, pets: [Animal], space: int, slogan: str) -> None:
         super().__init__(name, location, pets)
         self.space = space
         self.slogan = slogan
@@ -93,6 +95,7 @@ class PetShop(BasePetShop):
             self.pets.append(pet)
 
             message = f'{pet.name} successfully added to {self.name}!'
+
             write_in_file('petshop_logger.txt', message)
             return message
         else:
@@ -103,13 +106,30 @@ class PetShop(BasePetShop):
         if len(pet) > 0:
             self.pets.remove(pet[0])
             self.income += pet[0].price
+
             message = f'{pet[0].name} was successfully sold for {pet[0].price:.2f} BGN!'
+
             write_in_file('petshop_logger.txt', message)
             return message
         else:
             return f'No such pet found in the {self.name}!'
 
+    def christmas_time(self, christmas_discount: int) -> str:
+        try:
+            for pet in self.pets:
+                pet.christmas_discount(christmas_discount)
+            return f'The price of all pets was decreased by {christmas_discount}%!\nHappy Holidays!'
+        except ValueError:
+            return f'One of the pets couldn\'t lower it\'s price!'
+
+    @staticmethod
+    def read_petshop_logger_data(self) -> str:
+        file = open('petshop_logger.txt', 'r')
+        return 'Data from petshop_logger.txt:\n' + '\n'.join(line.replace('\n', '') for line in file)
+
+
 myPetShop = PetShop('Zoo', 'Durvenitsa', [cat, salamander, dog], 4, 'We live together!')
-myPetShop.add_pet(cat)
-print(myPetShop.sell_pet('Fluffy'))
-print(myShop)
+# myPetShop.add_pet(cat)
+# print(myPetShop.sell_pet('Fluffy'))
+# print(myShop)
+# print(myPetShop.read_petshop_logger_data())
