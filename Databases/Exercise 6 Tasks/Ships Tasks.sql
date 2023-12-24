@@ -1,0 +1,37 @@
+use ships;
+
+SELECT 
+	*
+FROM BATTLES
+JOIN OUTCOMES ON
+	BATTLES.NAME = OUTCOMES.BATTLE
+JOIN SHIPS ON 
+	OUTCOMES.SHIP = SHIPS.NAME
+JOIN CLASSES ON 
+	SHIPS.CLASS = CLASSES.CLASS
+WHERE 
+	(SELECT 
+		COUNT(*) 
+	FROM ships
+	JOIN outcomes out1 ON 
+		ships.NAME = out1.SHIP
+	JOIN classes ON
+		ships.CLASS = CLASSES.CLASS
+	WHERE 
+		out1.BATTLE = OUTCOMES.BATTLE AND
+		NUMGUNS < 9
+	) >= 3 
+AND 
+	(SELECT 
+		SUM(CASE 
+			WHEN result = 'ok' THEN 1
+		END)
+	FROM ships
+	JOIN outcomes out1 ON 
+		ships.NAME = out1.SHIP
+	JOIN classes ON
+		ships.CLASS = CLASSES.CLASS
+	WHERE 
+		out1.BATTLE = OUTCOMES.BATTLE AND 
+		NUMGUNS < 9
+	) >= 2;
