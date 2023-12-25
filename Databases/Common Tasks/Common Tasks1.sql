@@ -212,3 +212,56 @@ WHERE MAKER IN (
 ORDER BY 
 	MAKER,
 	PRODUCT.MODEL;
+
+/*
+	Компютрите, които са по-евтини от всеки лаптоп и принтер на същия
+	производител.
+*/
+
+SELECT * FROM PRODUCT 
+JOIN PC ON 
+	PRODUCT.model = PC.model
+WHERE MAKER IN (
+	SELECT 
+		MAKER
+	FROM PRODUCT
+	WHERE (
+		SELECT 
+			MAX(PRICE)
+		FROM product p1
+		JOIN PC ON
+			p1.model = pc.model
+		WHERE p1.MAKER = product.maker
+	) < (
+		SELECT 
+			MAX(PRICE)
+		FROM product p2
+		JOIN LAPTOP ON
+			p2.model = laptop.model
+		WHERE p2.MAKER = product.maker
+	)
+	GROUP BY Maker
+) AND MAKER IN (
+	SELECT 
+		MAKER
+	FROM PRODUCT
+	WHERE (
+		SELECT 
+			MAX(PRICE)
+		FROM product p1
+		JOIN PC ON
+			p1.model = pc.model
+		WHERE p1.MAKER = product.maker
+	) < (
+		SELECT 
+			MAX(PRICE)
+		FROM product p2
+		JOIN printer ON
+			p2.model = printer.model
+		WHERE p2.MAKER = product.maker
+	)
+	GROUP BY Maker
+	)
+ORDER BY 
+	MAKER,
+	PRODUCT.MODEL;
