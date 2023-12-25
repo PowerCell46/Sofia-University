@@ -1,6 +1,4 @@
-use ships;
-
-select * from ships
+USE ships;
 
 INSERT INTO CLASSES(CLASS, TYPE, COUNTRY, NUMGUNS, BORE, DISPLACEMENT)
 VALUES 
