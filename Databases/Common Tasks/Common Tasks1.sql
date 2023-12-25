@@ -115,3 +115,100 @@ WHERE CLASS NOT IN (
 	WHERE LAUNCHED > 1921
 	GROUP BY CLASSES.CLASS
 );
+
+use ships;
+
+/*
+	Името, държавата и калибъра (bore) на всички класове кораби с 6, 8 или 10
+	оръдия. Калибърът да се изведе в сантиметри (1 инч е приблизително 2.54 см).
+*/
+
+SELECT DISTINCT
+	CLASSES.CLASS,
+	COUNTRY,
+	BORE * 2.54
+FROM CLASSES
+JOIN SHIPS ON
+	CLASSES.CLASS = SHIPS.CLASS
+WHERE COUNTRY IN (
+	SELECT COUNTRY FROM CLASSES CL1
+	JOIN SHIPS ON
+		CLASSES.CLASS = SHIPS.CLASS
+	WHERE  
+		CL1.COUNTRY = CLASSES.COUNTRY AND 
+		BORE IN (6, 8, 10)
+)
+ORDER BY 
+	COUNTRY,
+	CLASS;
+
+/*
+	Държавите, които имат класове с различен калибър (напр. САЩ имат клас с 14
+	калибър и класове с 16 калибър, докато Великобритания има само класове с 15).
+*/
+
+SELECT DISTINCT
+	COUNTRY 
+FROM CLASSES
+WHERE 1 < (
+	SELECT 
+	COUNT(DISTINCT BORE)
+FROM CLASSES C1
+WHERE C1.COUNTRY = CLASSES.COUNTRY
+);
+
+/*
+	Страните, които произвеждат кораби с най-голям брой оръдия (numguns).
+*/
+
+SELECT 
+	COUNTRY,
+	AVG(BORE) AS "Average Number of Numguns"
+FROM CLASSES
+JOIN SHIPS ON
+	CLASSES.CLASS = SHIPS.CLASS
+GROUP BY COUNTRY
+ORDER BY AVG(BORE) DESC;
+
+SELECT 
+	COUNTRY,
+	MAX(BORE) AS "Biggest Number of Numguns"
+FROM CLASSES
+JOIN SHIPS ON
+	CLASSES.CLASS = SHIPS.CLASS
+GROUP BY COUNTRY
+ORDER BY MAX(BORE) DESC;
+
+/*
+	Компютрите, които са по-евтини от всеки лаптоп на същия производител
+*/
+
+use pc;
+
+SELECT * FROM PRODUCT 
+JOIN PC ON 
+	PRODUCT.model = PC.model
+WHERE MAKER IN (
+	SELECT 
+		MAKER
+	FROM PRODUCT
+	WHERE (
+		SELECT 
+			MAX(PRICE)
+		FROM product p1
+		JOIN PC ON
+			p1.model = pc.model
+		WHERE p1.MAKER = product.maker
+	) < (
+		SELECT 
+			MAX(PRICE)
+		FROM product p2
+		JOIN LAPTOP ON
+			p2.model = laptop.model
+		WHERE p2.MAKER = product.maker
+	)
+	GROUP BY Maker
+)
+ORDER BY 
+	MAKER,
+	PRODUCT.MODEL;
