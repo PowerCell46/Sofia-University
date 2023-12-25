@@ -261,7 +261,7 @@ WHERE MAKER IN (
 		WHERE p2.MAKER = product.maker
 	)
 	GROUP BY Maker
-	)
+)
 ORDER BY 
 	MAKER,
 	PRODUCT.MODEL;
