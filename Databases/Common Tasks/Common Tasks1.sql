@@ -77,3 +77,41 @@ JOIN OUTCOMES ON
 	SHIPS.NAME = OUTCOMES.SHIP
 WHERE RESULT = 'sunk'
 GROUP BY COUNTRY;
+
+/*
+	Всички държави, които нямат нито един потънал кораб.
+*/
+
+
+SELECT COUNTRY FROM CLASSES
+WHERE COUNTRY NOT IN (
+	SELECT 
+		COUNTRY	
+	FROM CLASSES
+	JOIN SHIPS ON 
+		CLASSES.CLASS = SHIPS.CLASS
+	LEFT JOIN OUTCOMES ON
+		SHIPS.NAME = OUTCOMES.SHIP
+	WHERE RESULT = 'sunk'
+	GROUP BY COUNTRY
+)
+GROUP BY COUNTRY;
+
+/*
+	(От държавен изпит) Имената на класовете, за които няма кораб, пуснат на вода
+	(launched) след 1921 г. Ако за класа няма пуснат никакъв кораб, той също трябва
+	да излезе в резултата.
+*/
+
+SELECT 
+	CLASS 
+FROM CLASSES 
+WHERE CLASS NOT IN (
+	SELECT
+		CLASSES.CLASS
+	FROM CLASSES
+	LEFT JOIN SHIPS ON 
+		CLASSES.CLASS = SHIPS.CLASS
+	WHERE LAUNCHED > 1921
+	GROUP BY CLASSES.CLASS
+);
