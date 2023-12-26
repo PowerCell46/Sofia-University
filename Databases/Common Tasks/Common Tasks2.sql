@@ -199,3 +199,36 @@ SELECT
 	END	AS "Sunken Ships"
 FROM CLASSES
 GROUP BY COUNTRY;
+
+/*
+	Намерете за всеки клас с поне 3 кораба броя на корабите от този клас, които са победили в битка
+	(result = 'ok')
+*/
+
+SELECT 
+	CLASS,
+	(
+		SELECT 
+			COUNT(SHIPS.NAME)
+		FROM CLASSES C1
+		JOIN SHIPS ON
+			C1.CLASS = SHIPS.CLASS
+		JOIN OUTCOMES ON
+			SHIPS.NAME = OUTCOMES.SHIP
+		WHERE C1.CLASS = CLASSES.CLASS
+		AND RESULT = 'ok'
+	) AS "Number of Victory Ships"
+FROM CLASSES
+WHERE 
+	(
+		SELECT 
+			COUNT(SHIPS.NAME)
+		FROM CLASSES C1
+		JOIN SHIPS ON
+			C1.CLASS = SHIPS.CLASS
+		JOIN OUTCOMES ON
+			SHIPS.NAME = OUTCOMES.SHIP
+		WHERE C1.CLASS = CLASSES.CLASS
+		AND RESULT = 'ok'
+	) >= 3
+GROUP BY CLASS;
