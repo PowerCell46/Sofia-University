@@ -125,3 +125,77 @@ SELECT
 	) AS "Number of Sunken Ships"
 FROM CLASSES 
 GROUP BY COUNTRY;
+
+/*
+	 За всяка държава да се изведе броят на повредените кораби и броят на потъналите кораби. Всяка от
+	бройките може да бъде и нула.
+*/
+
+SELECT 
+	COUNTRY,
+	CASE 
+		WHEN (
+			SELECT SUM(damaged_sum) FROM (
+				SELECT 
+					CASE 
+						WHEN result = 'damaged' THEN 1	
+						ELSE 0
+					END AS damaged_sum
+				FROM SHIPS
+				LEFT JOIN OUTCOMES ON 
+					SHIPS.NAME = OUTCOMES.SHIP
+				JOIN CLASSES C1 ON
+					SHIPS.CLASS = C1.CLASS
+				WHERE C1.COUNTRY = CLASSES.COUNTRY
+			) as subquery
+		) IS NULL THEN 0
+		ELSE (
+			SELECT SUM(damaged_sum) FROM (
+				SELECT 
+					CASE 
+						WHEN result = 'damaged' THEN 1	
+						ELSE 0
+					END AS damaged_sum
+				FROM SHIPS
+				LEFT JOIN OUTCOMES ON 
+					SHIPS.NAME = OUTCOMES.SHIP
+				JOIN CLASSES C1 ON
+					SHIPS.CLASS = C1.CLASS
+				WHERE C1.COUNTRY = CLASSES.COUNTRY
+			) as subquery
+		)
+		END	AS "Damaged Ships",
+	CASE 
+		WHEN (
+			SELECT SUM(sunk_sum) FROM (
+				SELECT 
+					CASE 
+						WHEN result = 'sunk' THEN 1	
+						ELSE 0
+					END AS sunk_sum
+				FROM SHIPS
+				LEFT JOIN OUTCOMES ON 
+					SHIPS.NAME = OUTCOMES.SHIP
+				JOIN CLASSES C2 ON
+					SHIPS.CLASS = C2.CLASS
+				WHERE C2.COUNTRY = CLASSES.COUNTRY
+			) as subquery
+		) IS NULL THEN 0
+		ELSE (
+			SELECT SUM(sunk_sum) FROM (
+				SELECT 
+					CASE 
+						WHEN result = 'sunk' THEN 1	
+						ELSE 0
+					END AS sunk_sum
+				FROM SHIPS
+				LEFT JOIN OUTCOMES ON 
+					SHIPS.NAME = OUTCOMES.SHIP
+				JOIN CLASSES C2 ON
+					SHIPS.CLASS = C2.CLASS
+				WHERE C2.COUNTRY = CLASSES.COUNTRY
+			) as subquery
+		)
+	END	AS "Sunken Ships"
+FROM CLASSES
+GROUP BY COUNTRY;
