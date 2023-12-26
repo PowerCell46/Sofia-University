@@ -265,3 +265,118 @@ WHERE MAKER IN (
 ORDER BY 
 	MAKER,
 	PRODUCT.MODEL;
+
+use movies;
+
+/*
+	За всяка филмова звезда да се изведе името, рождената дата и с кое студио е записвала най-много
+	филми. (Ако има две студиа с еднакъв брой филми, да се изведе кое да е от тях)
+*/
+
+SELECT 
+	DISTINCT NAME ,
+	BIRTHDATE,
+	(
+	SELECT TOP 1
+	STUDIO.NAME
+FROM STUDIO 
+JOIN MOVIE ON 
+	STUDIO.NAME = MOVIE.STUDIONAME
+JOIN STARSIN ON
+	MOVIE.TITLE = STARSIN.MOVIETITLE
+JOIN MOVIESTAR M1 ON
+	STARSIN.STARNAME = M1.NAME
+WHERE M1.NAME = MOVIESTAR.NAME
+GROUP BY STUDIO.NAME
+ORDER BY COUNT(STUDIO.ADDRESS)
+)
+FROM MOVIESTAR;
+
+/*
+	Намерете за всички производители на поне 2 лазерни принтера броя на произвежданите от тях PC-та
+	(конкретни конфигурации), евентуално 0.
+*/
+
+Use pc;
+
+SELECT 
+	maker,
+	CASE 
+		WHEN COUNT(CODE) IS NULL THEN 0
+		ELSE COUNT(code) 
+	END	AS "Number of PC configurations"
+FROM PRODUCT
+JOIN PC ON 
+	PRODUCT.model = PC.model
+WHERE MAKER IN (
+	SELECT 
+		MAKER
+	FROM product
+	JOIN PRINTER ON
+		product.model = printer.model
+	WHERE 
+		printer.type = 'Laser'	
+	GROUP BY maker
+	HAVING count(product.model) > 1
+)
+GROUP BY MAKER;
+
+/*
+	Да се изведат всички производители, за които средната цена на произведените компютри е по-ниска
+	от средната цена на техните лаптопи
+*/
+
+SELECT 
+	DISTINCT MAKER 
+FROM PRODUCT
+WHERE (
+SELECT 
+	AVG(PRICE) 
+FROM PRODUCT P1
+JOIN PC ON 
+	P1.MODEL = PC.MODEL
+WHERE P1.maker = PRODUCT.MAKER
+GROUP BY MAKER
+) < (
+SELECT 
+	AVG(PRICE) 
+FROM PRODUCT P2
+JOIN LAPTOP ON 
+	P2.MODEL = laptop.MODEL
+WHERE P2.maker = PRODUCT.MAKER
+GROUP BY MAKER
+);
+
+/*
+	Един модел компютри може да се предлага в няколко конфигурации с евентуално различна цена. Да
+	се изведат тези модели компютри, чиято средна цена (на различните му конфигурации) е по-ниска от
+	най-евтиния лаптоп, произвеждан от същия производител.
+*/
+
+CREATE TABLE #temp_avg_prices (
+    model INT,
+    avg_price DECIMAL(10, 2)
+);
+
+INSERT INTO #temp_avg_prices (model, avg_price)
+SELECT 
+    product.model,
+    AVG(PRICE) AS avg_price
+FROM PRODUCT
+JOIN PC ON PRODUCT.model = PC.model
+GROUP BY product.model;
+
+SELECT
+	*
+FROM #temp_avg_prices
+JOIN PRODUCT ON
+	#temp_avg_prices.model = product.model
+WHERE avg_price < (
+	SELECT 
+		MIN(PRICE)
+	FROM PRODUCT P1
+	JOIN LAPTOP ON 
+		P1.model = LAPTOP.model
+	WHERE P1.maker = product.maker
+)
+ORDER BY #temp_avg_prices.model;
