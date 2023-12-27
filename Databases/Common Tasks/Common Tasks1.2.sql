@@ -209,3 +209,55 @@ WHERE
 	WHERE C1.CLASS = CLASSES.CLASS
 	GROUP BY C1.CLASS
 	);
+
+/*
+	Да се изведат американските класове, за които всички техни кораби са пуснати на вода в рамките на поне 10 години
+	(например кораби от клас North Carolina са пускани в периода от 1911 до 1941, което е повече от 10 години, докато
+	кораби от клас Tennessee са пуснати само през 1920 и 1921 г.).
+*/
+
+SELECT
+	CLASSES.CLASS
+FROM CLASSES
+WHERE 
+	COUNTRY = 'USA' AND 
+	(
+		SELECT 
+			MAX(LAUNCHED)
+		FROM CLASSES C1
+		JOIN SHIPS ON
+			C1.CLASS = SHIPS.CLASS
+		WHERE C1.CLASS= CLASSES.CLASS
+	) -
+	(
+		SELECT 
+			MIN(LAUNCHED)
+		FROM CLASSES C2
+		JOIN SHIPS ON
+			C2.CLASS = SHIPS.CLASS
+		WHERE C2.CLASS= CLASSES.CLASS
+	) < 10;
+
+/*
+	За всяка битка да се изведе средният брой кораби от една и съща държава (например в битката при Guadalcanal са
+	участвали 3 американски и един японски кораб, т.е. средният брой е 2).
+*/
+
+SELECT 
+	NAME,
+	(
+	SELECT AVG(CAST(avg_ships AS DECIMAL)) FROM (
+		SELECT 
+			COUNT(SHIP) as avg_ships
+		FROM BATTLES B1
+		JOIN OUTCOMES ON	
+			B1.NAME = OUTCOMES.BATTLE
+		JOIN SHIPS ON 
+			OUTCOMES.SHIP = SHIPS.NAME
+		JOIN CLASSES ON 
+			SHIPS.CLASS = CLASSES.CLASS
+		WHERE 
+			B1.NAME = BATTLES.NAME
+		GROUP BY COUNTRY) AS subquery
+	) AS "Average Number of Ships per Country"
+FROM BATTLES;
