@@ -27,8 +27,6 @@ ORDER BY year;
 	Terms of Endearment, но дължината им е по-малка или неизвестна.
 */
 
-
-
 SELECT 
 	TITLE,
 	LENGTH * 1.0 / 60 AS "Length in Hours"
