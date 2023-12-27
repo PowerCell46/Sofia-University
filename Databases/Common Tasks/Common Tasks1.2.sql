@@ -153,3 +153,59 @@ ORDER BY (
 		S1.NAME = STUDIO.NAME
 	GROUP BY STARNAME) AS subquery
 ) DESC;
+
+/*
+	За всеки кораб, който е от клас с име, несъдържащо буквите i и k, да се изведе името на кораба и през коя година е
+	пуснат на вода (launched). Резултатът да бъде сортиран така, че първо да се извеждат най-скоро пуснатите кораби.
+*/
+use ships;
+
+SELECT 
+	name, 
+	launched
+FROM SHIPS
+WHERE
+	NAME NOT LIKE '%i%' AND 
+	NAME NOT LIKE '%k%'
+ORDER BY LAUNCHED DESC;
+
+/*
+	Да се изведат имената на всички битки, в които е повреден (damaged) поне един японски кораб.
+*/
+
+SELECT 
+	BATTLES.NAME 
+FROM BATTLES
+JOIN OUTCOMES ON 
+	BATTLES.NAME = OUTCOMES.BATTLE
+JOIN SHIPS ON 
+	OUTCOMES.BATTLE = BATTLES.NAME
+JOIN CLASSES ON 
+	SHIPS.CLASS = CLASSES.CLASS
+WHERE 
+	COUNTRY = 'Japan' AND 
+	RESULT = 'damaged'
+GROUP BY BATTLES.NAME;
+
+/*
+	Да се изведат имената и класовете на всички кораби, пуснати на вода една година след кораба 'Rodney' и броят на
+	оръдията им е по-голям от средния брой оръдия на класовете, произвеждани от тяхната страна.
+*/
+
+SELECT 
+	SHIPS.NAME,
+	SHIPS.CLASS
+FROM SHIPS 
+JOIN CLASSES ON
+	SHIPS.CLASS = CLASSES.CLASS
+WHERE 
+	LAUNCHED = (SELECT LAUNCHED + 1 FROM SHIPS WHERE NAME = 'Rodney') AND 
+	CLASSES.NUMGUNS > (
+	SELECT 
+		AVG(NUMGUNS)
+	FROM CLASSES C1
+	JOIN SHIPS ON 
+		C1.CLASS = SHIPS.CLASS
+	WHERE C1.CLASS = CLASSES.CLASS
+	GROUP BY C1.CLASS
+	);
