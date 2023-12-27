@@ -79,3 +79,77 @@ WHERE
 			S2.STARNAME = STARSIN.STARNAME AND 
 			YEAR < 1980
 	) > 0;
+
+/*
+	Всички черно-бели филми, записани преди най-стария цветен филм (InColor='y'/'n') на същото студио.
+*/
+
+SELECT 
+	* 
+FROM MOVIE
+WHERE 
+	INCOLOR = 'N' AND 
+	YEAR < (
+	SELECT TOP 1
+	YEAR
+FROM MOVIE 
+JOIN STUDIO S1 ON
+	S1.NAME = MOVIE.STUDIONAME
+WHERE 
+	S1.NAME = (SELECT STUDIONAME FROM MOVIE WHERE INCOLOR = 'N') AND 
+	INCOLOR = 'Y'
+ORDER BY YEAR);
+ 
+/*
+	Имената и адресите на студиата, които са работили с по-малко от 5 различни филмови звезди. Студиа, за които няма
+	посочени филми или има, но не се знае кои актьори са играли в тях, също да бъдат изведени. Първо да се изведат
+	студиата, работили с най-много звезди. Напр. ако студиото има два филма, като в първия са играли A, B и C, а във
+	втория - C, D и Е, то студиото е работило с 5 звезди общо
+*/
+
+SELECT 
+	NAME,
+	ADDRESS
+FROM STUDIO
+WHERE(
+		SELECT SUM(actor_movie_count) FROM (
+		SELECT 
+			COUNT(STARNAME) AS actor_movie_count
+		FROM STUDIO S1
+		JOIN MOVIE ON 
+			S1.NAME = MOVIE.STUDIONAME
+		JOIN STARSIN ON
+			STARSIN.MOVIETITLE = MOVIE.TITLE
+		WHERE 
+			S1.NAME = STUDIO.NAME
+		GROUP BY STARNAME) AS subquery
+	) < 5 OR NAME IN (
+		SELECT 
+			NAME
+		FROM STUDIO
+		LEFT JOIN MOVIE ON 
+			STUDIO.NAME = MOVIE.STUDIONAME
+		WHERE MOVIE.TITLE IS NULL
+	) OR NAME IN (
+	SELECT 
+		NAME 
+	FROM STUDIO
+	JOIN MOVIE ON 
+		STUDIO.NAME = MOVIE.STUDIONAME
+	LEFT JOIN STARSIN ON
+		MOVIE.TITLE = STARSIN.MOVIETITLE
+	WHERE MOVIETITLE IS NULL
+	)
+ORDER BY (
+	SELECT SUM(actor_movie_count) FROM (
+	SELECT 
+		COUNT(STARNAME) AS actor_movie_count
+	FROM STUDIO S1
+	JOIN MOVIE ON 
+		S1.NAME = MOVIE.STUDIONAME
+	JOIN STARSIN ON
+		STARSIN.MOVIETITLE = MOVIE.TITLE
+	WHERE 
+		S1.NAME = STUDIO.NAME
+	GROUP BY STARNAME) AS subquery
+) DESC;
