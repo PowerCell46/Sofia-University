@@ -259,3 +259,104 @@ SELECT
 		GROUP BY COUNTRY) AS subquery
 	) AS "Average Number of Ships per Country"
 FROM BATTLES;
+
+/*
+	За всяка държава да се изведе: броят на корабите от тази държава; броя на битките, в които е участвала; броя на
+	битките, в които неин кораб е потънал ('sunk') (ако някоя от бройките е 0 – да се извежда 0).
+*/
+use ships;
+
+SELECT 
+	DISTINCT COUNTRY,
+	(
+		SELECT 
+			COUNT(NAME)
+		FROM CLASSES C1
+		JOIN SHIPS ON 
+			C1.CLASS = ships.CLASS
+		WHERE C1.COUNTRY = CLASSES.COUNTRY
+	) AS "Number of Ships",
+	(
+		SELECT COUNT(BATTLE) FROM (
+			SELECT 
+				BATTLE
+			FROM CLASSES C2
+			JOIN SHIPS ON 
+				C2.CLASS = SHIPS.CLASS
+			JOIN OUTCOMES ON 
+				SHIPS.NAME = OUTCOMES.SHIP
+			WHERE C2.COUNTRY = CLASSES.COUNTRY
+			GROUP BY BATTLE
+		) AS subquery
+	) AS "Number of Battles",
+	(
+		SELECT COUNT(BATTLE) FROM (
+			SELECT 
+				BATTLE
+			FROM CLASSES C3
+			JOIN SHIPS ON 
+				C3.CLASS = SHIPS.CLASS
+			JOIN OUTCOMES O1 ON 
+				SHIPS.NAME = O1.SHIP
+			WHERE 
+				C3.COUNTRY = CLASSES.COUNTRY AND 
+				O1.RESULT = 'sunk'
+			GROUP BY BATTLE
+		) as subquery
+	) AS "Number of battles with sunk Ships"
+FROM CLASSES;
+
+/*
+	За всеки актьор/актриса изведете броя на различните студиа, с които са записвали филми.
+	За всеки актьор/актриса изведете броя на различните студиа, с които са записвали филми, включително и за тези, за
+	които нямаме информация в какви филми са играли.
+*/
+
+use movies;
+
+SELECT 
+	NAME,
+	(
+		SELECT COUNT(STUDIONAME) FROM (
+			SELECT STUDIONAME FROM MOVIESTAR M1
+			LEFT JOIN STARSIN ON 
+				M1.NAME = STARSIN.STARNAME
+			LEFT JOIN MOVIE ON 
+				STARSIN.MOVIETITLE = MOVIE.TITLE
+			WHERE M1.NAME = MOVIESTAR.NAME
+			GROUP BY STUDIONAME
+		) as subquery
+	) AS "Number of Studios"
+FROM MOVIESTAR;
+
+
+/*
+	Изведете имената на актьорите, участвали в поне 3 филма след 1990 г.
+*/
+
+SELECT 
+	MOVIESTAR.NAME
+FROM MOVIESTAR
+JOIN STARSIN ON
+	MOVIESTAR.NAME = STARSIN.STARNAME
+JOIN MOVIE ON 
+	STARSIN.MOVIETITLE = MOVIE.TITLE
+GROUP BY 
+	MOVIESTAR.NAME
+HAVING 
+	SUM(
+	CASE
+		WHEN MOVIE.YEAR > 1990 THEN 1
+		ELSE 0
+	END) >= 1;
+
+/*
+	Да се изведат различните модели компютри, подредени по цена на най-скъпия конкретен компютър от даден модел.
+*/
+
+use pc;
+
+SELECT * FROM PC
+ORDER BY 
+	PC.MODEL,
+	PRICE DESC;
