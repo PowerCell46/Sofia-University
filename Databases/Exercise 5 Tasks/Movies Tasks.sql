@@ -38,3 +38,15 @@ FROM STARSIN
 WHERE MOVIEYEAR > 1990
 GROUP BY STARNAME
 HAVING COUNT(*) >= 3;
+
+-- Да се изведе средният брой филми, в които са се снимали актьорите
+
+SELECT 
+	AVG(avg_movies_per_current_actor)
+FROM (SELECT 
+--	MOVIESTAR.NAME,
+	COUNT(MOVIETITLE) AS avg_movies_per_current_actor
+FROM MOVIESTAR
+LEFT JOIN STARSIN ON
+	MOVIESTAR.NAME = STARSIN.STARNAME
+GROUP BY MOVIESTAR.NAME) subquery;
