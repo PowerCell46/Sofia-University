@@ -5,7 +5,18 @@ SELECT
 	pc.price
 FROM PRODUCT
 LEFT JOIN PC ON 
-	PRODUCT.model = PC.model
+	PRODUCT.model = PC.model;
+
+-- corrected version
+
+SELECT 
+	pc.model,
+	price
+FROM product
+LEFT JOIN PC ON
+	product.model = PC.model
+WHERE type = 'PC'
+ORDER BY product.model;
 
 
 SELECT 
