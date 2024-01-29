@@ -1,5 +1,7 @@
 USE movies;
 
+--  За всеки актьор/актриса изведете броя на различните студиа, с които са записвали филми
+
 SELECT 
 	name,
 	(SELECT 
@@ -16,6 +18,21 @@ JOIN STARSIN ON
 JOIN MOVIE ON 
 	starsin.MOVIETITLE = movie.TITLE
 GROUP BY NAME;
+
+-- Other way of solving it
+
+SELECT 
+	NAME,
+	(SELECT 
+	COUNT(DISTINCT STUDIONAME)
+FROM MOVIESTAR
+JOIN STARSIN ON
+	MOVIESTAR.NAME = STARSIN.STARNAME
+JOIN MOVIE ON 
+	MOVIE.TITLE = STARSIN.MOVIETITLE
+WHERE MOVIESTAR.NAME = m2.NAME)
+FROM MOVIESTAR m2;
+
 
 SELECT 
 	name,
