@@ -9,7 +9,7 @@ def sum(*args):
 
 
 def avg(*args):
-    return sum(*args) / len(args)
+    return sum(*args) / len(*args)
 
 
 def mean(*args):
