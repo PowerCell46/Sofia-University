@@ -1,8 +1,15 @@
 import math
 
 
+def sum(*args):
+    result = 0
+    for el in args:
+        result += el
+    return result
+
+
 def avg(*args):
-    return sum([val for val in args]) / len(args)
+    return sum(*args) / len(args)
 
 
 def mean(*args):
@@ -25,11 +32,11 @@ def mode(*args):
         return [el[0] for el in sorted_dict if el[1] == max_value]
 
 
-print(5 + 3)
+print(sum(5, 3))
 
 print((10 - 5) * 7)
 
-print(avg(5 + 6 + 7 + 8))
+print(avg(5, 6, 7, 8))
 
 print(math.sqrt(3) + math.sqrt(4) + math.sqrt(5))
 
