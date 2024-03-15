@@ -2,7 +2,7 @@ function average(...args) {
     return args.reduce((acc, curr) => acc + curr, 0) / args.length;
 }
 
-// A different approach where the manipulation of the data isn't from up to down, left to right, 
+// A different approach where the manipulation of the data isn't from top to bottom, left to right, 
 // but finding the current biggest value 
 // (if there are multiple we get the one that is closer to the beginning of the matrix)
 // doing the calculation and continuing with the next biggest element until we have gone through all of them.
