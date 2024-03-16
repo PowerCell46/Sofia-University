@@ -4,23 +4,23 @@ function average(...args) {
 
 // A different approach where the manipulation of the data isn't from top to bottom, left to right, 
 // but finding the current biggest value 
-// (if there are multiple we get the one that is closer to the beginning of the matrix)
-// doing the calculation and continuing with the next biggest element until we have gone through all of them.
+// (if there are multiple we get the one that is closer to the beginning of the matrix),
+// doing the calculation and continuing with the next biggest element until we have gone through all elements.
 
 function slidingWindowsDesc(matrix) {
-    let twoDMatrix = [];
+    let flattenedMatrix = [];
 
     for (let row of matrix) {
-        row.forEach(value => twoDMatrix.push([value, false]));
+        row.forEach(value => flattenedMatrix.push([value, false]));
     }
 
-    for (let index = 0; index < twoDMatrix.length; index++) {
+    for (let index = 0; index < flattenedMatrix.length; index++) {
 
-        let orderedMatrix = twoDMatrix.slice();
+        let orderedMatrix = flattenedMatrix.slice();
         orderedMatrix.sort((arr1, arr2) => arr2[0] - arr1[0]);
         const currentBiggestElement = orderedMatrix.filter(arr => arr[1] === false)[0];
 
-        const current2Dindex = twoDMatrix.indexOf(currentBiggestElement);
+        const current2Dindex = flattenedMatrix.indexOf(currentBiggestElement);
         const currentColumnIndex = current2Dindex % matrix[0].length;
         const currentRowIndex = ((current2Dindex - currentColumnIndex) / matrix[0].length);
 
@@ -43,7 +43,7 @@ function slidingWindowsDesc(matrix) {
 
         const newValue = average(...elements);
         matrix[currentRowIndex][currentColumnIndex] = newValue;
-        twoDMatrix[current2Dindex] = [newValue, true];
+        flattenedMatrix[current2Dindex] = [newValue, true];
     }
 
     return matrix;
