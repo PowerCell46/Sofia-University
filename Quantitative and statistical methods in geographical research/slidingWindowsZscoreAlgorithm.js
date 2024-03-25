@@ -3,18 +3,30 @@ function average(...args) {
 }
 
 
-function zScore(dataArray) {
-    const averageValue = average(...(dataArray.map(nestedArr => nestedArr[0])));
-    const calcDeviationArr = dataArray.map(value => ((value[0] - averageValue) ** 2));
+function zScore(dataArray, absoluteValues) {
+    const averageValue = average(...(Array.isArray(dataArray[0]) ? dataArray.map(nestedArr => nestedArr[0]) : dataArray));
+    const calcDeviationArr = dataArray.map(value => Array.isArray(value) ? ((value[0] - averageValue) ** 2) : ((value - averageValue) ** 2));
     const standardDeviation = Math.sqrt(average(...calcDeviationArr));
     
-    const zScoreArray = dataArray.map(value => [value[0], value[1], [Math.abs(value[0] - averageValue) / standardDeviation]]);
+    if (absoluteValues) {
+        var zScoreArray = dataArray.map(value => Array.isArray(value) ? 
+        [value[0], value[1], Math.abs((value[0] - averageValue) / standardDeviation)] : 
+        [value, Math.abs((value - averageValue) / standardDeviation)]);
+    } else {
+        var zScoreArray = dataArray.map(value => Array.isArray(value) ?
+        [value[0], value[1], (value[0] - averageValue) / standardDeviation] :
+        [value, (value - averageValue) / standardDeviation]);
+    }
     return zScoreArray;
 }
+
+// console.log(zScore([10, 12, 14, 16, 18], true));
+
 
 // Best implementaion of the Sliding Windows algorithm where we calculate the Z-score for every value in the matrix
 // and do the calculation for the value with the biggest Z-score (if there are multiple we get the one that is 
 // closer to the beginning of the matrix) until we go through the whole array.
+
 
 function slidingWindowsZscore(matrix) {
     let flattenedMatrix = [];
@@ -22,11 +34,12 @@ function slidingWindowsZscore(matrix) {
     for (let row of matrix) {
         row.forEach(value => flattenedMatrix.push([value, false]));
     }
+    
+    flattenedMatrix = zScore(flattenedMatrix.slice(), true);
 
     for (let index = 0; index < flattenedMatrix.length; index++) {
 
-        let orderedMatrix = zScore(flattenedMatrix.slice());
-        orderedMatrix.sort((arr1, arr2) => arr2[2] - arr1[2]);
+        let orderedMatrix = flattenedMatrix.slice().sort((arr1, arr2) => arr2[2] - arr1[2]);
         const currentBiggestElement = orderedMatrix.filter(arr => arr[1] === false)[0];
 
         const current2Dindex = flattenedMatrix.indexOf(currentBiggestElement);
