@@ -12,9 +12,9 @@ function zScore(dataArray) {
     return zScoreArray;
 }
 
-
-// console.log(zScore([[10, false], [12, false], [14, false], [16, false], [18, false]]));
-
+// Best implementaion of the Sliding Windows algorithm where we calculate the Z-score for every value in the matrix
+// and do the calculation for the value with the biggest Z-score (if there are multiple we get the one that is 
+// closer to the beginning of the matrix) until we go through the whole array.
 
 function slidingWindowsZscore(matrix) {
     let flattenedMatrix = [];
