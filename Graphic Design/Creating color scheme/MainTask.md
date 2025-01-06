@@ -5,16 +5,16 @@
 ### Colour Values
 
 **Hex Values**
---white: #ffffffff; 
---aureolin: #ffeb34ff; 
---redwood: #a7573eff; 
---rich-black: #080a13ff;
+--white: #ffffffff; <br/>
+--aureolin: #ffeb34ff; <br/>
+--redwood: #a7573eff; <br/>
+--rich-black: #080a13ff; <br/>
 
 **SCSS RGB** 
-$white: rgba(255, 255, 255, 1); 
-$aureolin: rgba(255, 235, 52, 1); 
-$redwood: rgba(167, 87, 62, 1); 
-$rich-black: rgba(8, 10, 19, 1);
+$white: rgba(255, 255, 255, 1); <br/> 
+$aureolin: rgba(255, 235, 52, 1); <br/>
+$redwood: rgba(167, 87, 62, 1); <br/>
+$rich-black: rgba(8, 10, 19, 1); <br/>
 
 ## HTML&CSS demonstration
 
