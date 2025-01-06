@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+
+/* Reset.css begin */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Reset.css end */
+
+#main-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #012e71;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes _ngcontent-ng-c3170080495_textShine {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+#first-h1 {
+    background: radial-gradient(circle, #ffeb34ff 0, #a7573eff 100%);
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: "Lexend Deca", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-animation: _ngcontent-ng-c3170080495_textShine 3s ease-in-out infinite alternate;
+    animation: _ngcontent-ng-c3170080495_textShine 3s ease-in-out infinite alternate;
+    background: -webkit-radial-gradient(circle, #ffeb34ff 0%, #a7573eff 100%);
+    background: radial-gradient(circle, #ffeb34ff 0%, #a7573eff 100%);
+    background-clip: text;
+    background-size: 200%;
+    margin-right: 5%;
+}
+
+#second-h1 {
+    background: radial-gradient(circle, #ffffffff 0, #080a13ff 100%);
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: "Lexend Deca", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-animation: _ngcontent-ng-c3170080495_textShine 3s ease-in-out infinite alternate;
+    animation: _ngcontent-ng-c3170080495_textShine 3s ease-in-out infinite alternate;
+    background: -webkit-radial-gradient(circle, #ffffffff 0%, #080a13ff 100%);
+    background: radial-gradient(circle, #ffffffff 0%, #080a13ff 100%);
+    background-clip: text;
+    background-size: 200%;
+}
