@@ -1,6 +1,6 @@
 ## Създаване на цветова схема
 
-![[Pasted image 20250106232406.png]]
+<img src="https://github.com/PowerCell46/Sofia-University/blob/main/Graphic%20Design/Creating%20color%20scheme/Pasted%20image%2020250106232406.png" alt="Image Description" />
 
 ### Colour Values
 
@@ -18,4 +18,4 @@ $rich-black: rgba(8, 10, 19, 1);
 
 ## HTML&CSS demonstration
 
-![[Pasted image 20250106235256.png]]
+<img src="https://github.com/PowerCell46/Sofia-University/blob/main/Graphic%20Design/Creating%20color%20scheme/Pasted%20image%2020250106235256.png" alt="Image Description" />
