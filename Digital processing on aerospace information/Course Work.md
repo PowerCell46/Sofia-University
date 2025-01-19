@@ -10,6 +10,7 @@
 
 - Използвана платформа: [apps.sentinel-hub.com](https://apps.sentinel-hub.com/)  
 <br/>
+
 Зададени параметри: <br/>
 **Satellite**: Sentinel-2 L2A <br/>  
 **Max cloud coverage**: 17% <br/>  
