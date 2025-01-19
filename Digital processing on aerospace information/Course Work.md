@@ -10,9 +10,9 @@
 
 - Използвана платформа: [apps.sentinel-hub.com](https://apps.sentinel-hub.com/)  
 <br/>
-Зададени параметри:  
-**Satellite**: Sentinel-2 L2A  
-**Max cloud coverage**: 17%  
+Зададени параметри: <br/>
+**Satellite**: Sentinel-2 L2A <br/>  
+**Max cloud coverage**: 17% <br/>  
 **Time Range**:  
   - **From**: 22-06-24  
   - **To**: 22-09-24  
@@ -61,4 +61,5 @@
 ## Изготвена Карта № 2:
 - Карта на територията на **община Банско**, с 6те класифицирани територии: *Urban, Forest, Vegetation, Non-arable land, Rocks & Clouds*. <br/>
 Форматиране на картата: заглавие, легенда, северна стрелка & мащаб.
+
 ![Final Map 2](https://github.com/PowerCell46/Sofia-University/blob/main/Digital%20processing%20on%20aerospace%20information/images/FinalMap2.jpg)
