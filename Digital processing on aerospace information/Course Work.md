@@ -13,8 +13,8 @@
 Зададени параметри: <br/>
 **Satellite**: Sentinel-2 L2A <br/>  
 **Max cloud coverage**: 17% <br/>  
-**Time Range**:  
-  - **From**: 22-06-24  
+**Time Range**: <br/> 
+  - **From**: 22-06-24 <br/>  
   - **To**: 22-09-24  
 
 ![Used Platform](https://github.com/PowerCell46/Sofia-University/blob/main/Digital%20processing%20on%20aerospace%20information/images/UsedPlatform.png)
