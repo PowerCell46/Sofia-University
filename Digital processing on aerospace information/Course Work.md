@@ -8,14 +8,14 @@
 
 ## Избрано Сателитно изображение:
 
-- Използвана платформа: [apps.sentinel-hub.com](https://apps.sentinel-hub.com/)
+- Използвана платформа: [apps.sentinel-hub.com](https://apps.sentinel-hub.com/)  
 <br/>
-Зададени параметри: <br/>
-**Satellite**: Sentinel-2 L2A <br/>
-**Max cloud coverage**: 17% <br/>
-**Time Range**: 
-    - **From**: 22-06-24 
-    - **To**: 22-09-24 
+Зададени параметри:  
+**Satellite**: Sentinel-2 L2A  
+**Max cloud coverage**: 17%  
+**Time Range**:  
+  - **From**: 22-06-24  
+  - **To**: 22-09-24  
 
 ![Used Platform](https://github.com/PowerCell46/Sofia-University/blob/main/Digital%20processing%20on%20aerospace%20information/images/UsedPlatform.png)
 
