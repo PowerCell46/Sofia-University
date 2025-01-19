@@ -29,7 +29,7 @@
 ## Изготвена Карта № 1:
 - Работата с **ArcGIS Pro** включва очертаване на границите на избраната територия и оформяне на картата с подходящо форматиране, като добавяне на заглавие, северна стрелка и мащаб за по-голяма прецизност и професионален изглед.
 
-![Final Map 1](https://github.com/PowerCell46/Sofia-University/blob/main/Digital%20processing%20on%20aerospace%20information/images/FinalMap1.png)
+![Final Map 1](https://github.com/PowerCell46/Sofia-University/blob/main/Digital%20processing%20on%20aerospace%20information/images/Layout.jpg)
 
 ## Стъпки при Изготвена Карта № 2:
 - Изготвяне на **контролирана пиксел базирана класификация**: <br/>
