@@ -14,7 +14,7 @@
 Зададени параметри: <br/>
 **Satellite**: Sentinel-2 L2A  
 **Max cloud coverage**: 17%  
-**Time Range**: <br/> 
+**Time Range**:
   - **From**: 22-06-24 <br/>  
   - **To**: 22-09-24  
 
