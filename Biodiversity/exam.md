@@ -6,9 +6,10 @@
 Изготване на карта спрямо класифицираните типове в новата колона HemerobyT, чрез инструмента symbology, задаване на подходящи цветове за визуализация на типовете земно покритие.
 
 ## Select Query на тип 1 (Natural)
-![alt text](image.png)
+![Select Query Image](https://github.com/PowerCell46/Sofia-University/blob/main/Biodiversity/images/image.png)
  
 ## Задаване на подходящи цветове за типовете земно покритие
-![alt text](image-1.png)
+![Setting colors for Symbology](https://github.com/PowerCell46/Sofia-University/blob/main/Biodiversity/images/image-1.png)
 
 ## Финална Карта
+![Final Map](https://github.com/PowerCell46/Sofia-University/blob/main/Biodiversity/images/SofiaHemerobyMapPeterGerdzhikov.jpg)
