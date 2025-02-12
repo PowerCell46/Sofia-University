@@ -6,6 +6,8 @@
 ## Exercise 2 Map
 ![Exercise 2 Map image](./images/Exercise2MapPeterGerdzhikov.jpg)
 
+<!-- Снимки - композиция -->
+
 ## Exercise 3 Map 1
 ![Exercise 3 Map 1 image](./images/Exercise3Map1PeterGerdzhikov.jpg)
 
@@ -28,14 +30,14 @@
 ## Exercise 5 Map 2
 ![Exercise 5 Map 2 image](./images/Exercise5Map2PeterGerdzhikov.jpg)
 
-## Exercise 3 Maps 3 Scenarios Map 1
-![Exercise 3 Maps 3 Scenarios Map 1 image](./images/ExerciseThreeMapsThreeScenariosOptimisticPeterGerdzhikov.png)
+## Exercise Three Maps Three Scenarios Map 1
+![Exercise Three Maps Three Scenarios Map 1 image](./images/ExerciseThreeMapsThreeScenariosOptimisticPeterGerdzhikov.png)
 
-## Exercise 3 Maps 3 Scenarios Map 2
-![Exercise 3 Maps 3 Scenarios Map 2 image](./images/ExerciseThreeMapsThreeScenariosPessimisticPeterGerdzhikov.png)
+## Exercise Three Maps Three Scenarios Map 2
+![Exercise Three Maps Three Scenarios Map 2 image](./images/ExerciseThreeMapsThreeScenariosPessimisticPeterGerdzhikov.png)
 
-## Exercise 3 Maps 3 Scenarios Map 3
-![Exercise 3 Maps 3 Scenarios Map 3 image](./images/ExerciseThreeMapsThreeScenariosRealisticPeterGerdzhikov.png)
+## Exercise Three Maps Three Scenarios Map 3
+![Exercise Three Maps Three Scenarios Map 3 image](./images/ExerciseThreeMapsThreeScenariosRealisticPeterGerdzhikov.png)
 
 ## Visualization and cartographic layout January Map
 ![Visualization and cartographic layout January Map image](./images/ExerciseVisualizationAndCatropgraphicLayoutJanPeterGerdzhikov.jpg)
@@ -57,3 +59,5 @@
 
 ## Exercise 8 Import Map
 ![Exercise 8 Import Map](./images/Exercise8Map2PeterGerdzhikov.jpg)
+
+<!-- Viewpoints project -->
