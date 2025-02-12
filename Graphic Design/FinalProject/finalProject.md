@@ -27,3 +27,33 @@
 
 ## Exercise 5 Map 2
 ![Exercise 5 Map 2 image](./images/Exercise5Map2PeterGerdzhikov.jpg)
+
+## Exercise 3 Maps 3 Scenarios Map 1
+![Exercise 3 Maps 3 Scenarios Map 1 image](./images/ExerciseThreeMapsThreeScenariosOptimisticPeterGerdzhikov.png)
+
+## Exercise 3 Maps 3 Scenarios Map 2
+![Exercise 3 Maps 3 Scenarios Map 2 image](./images/ExerciseThreeMapsThreeScenariosPessimisticPeterGerdzhikov.png)
+
+## Exercise 3 Maps 3 Scenarios Map 3
+![Exercise 3 Maps 3 Scenarios Map 3 image](./images/ExerciseThreeMapsThreeScenariosRealisticPeterGerdzhikov.png)
+
+## Visualization and cartographic layout January Map
+![Visualization and cartographic layout January Map image](./images/ExerciseVisualizationAndCatropgraphicLayoutJanPeterGerdzhikov.jpg)
+
+## Visualization and cartographic layout July Map
+![Visualization and cartographic layout July Map image](./images/ExerciseVisualizationAndCatropgraphicLayoutJulPeterGerdzhikov.jpg)
+
+## Exercise 6 Map
+![Exercise 6 Map image](./images/Exercise6MapPeterGerdzhikov.jpg)
+
+## Exercise 7 Map
+![Exercise 7 Map image](./images/Exercise7MapPeterGerdzhikov.jpg)
+
+## Exercise Complementary Map
+![Exercise Complementary Map image](./images/ExerciseComplementaryMapPeterGerdzhikov.jpg)
+
+## Exercise 8 Export Map
+![Exercise 8 Export Map](./images/Exercise8Map1PeterGerdzhikov.jpg)
+
+## Exercise 8 Import Map
+![Exercise 8 Import Map](./images/Exercise8Map2PeterGerdzhikov.jpg)
