@@ -1,33 +1,41 @@
 # Final Project Graphic Design
 
 ## Exercise 1 Map
+### Population by districts, Bulgaria 2021
 ![Exercise 1 Map image](./images/Exercise1MapPeterGerdzhikov.jpg)
 
 ## Exercise 2 Map
+### Classifying territories in Central Balkan
 ![Exercise 2 Map image](./images/Exercise2MapPeterGerdzhikov.jpg)
 
 <!-- Снимки - композиция -->
 
 ## Exercise 3 Map 1
+### Parts of forrest territories in Burgas District
 ![Exercise 3 Map 1 image](./images/Exercise3Map1PeterGerdzhikov.jpg)
 
 ## Exercise 3 Map 2
+### Average income by district, Bulgaria 2020
 ![Exercise 3 Map 2 image](./images/Exercise3Map2PeterGerdzhikov.jpg)
 
 ## Exercise 3 Map 3
+### Average income by district (Bar chart), Bulgaria 2020
 ![Exercise 3 Map 3 image](./images/Exercise3Map3PeterGerdzhikov.jpg)
 
 <!-- Задание - композиция с данни от OSM -->
 
 ## Exercise 4
+### Population Data, Sofia, Bulgaria
 ![Exercise 4 Map image](./images/Exercise4MapPeterGerdzhikov.jpg)
 
 <!-- Карти - Етна -->
 
 ## Exercise 5 Map 1
+### Biosphere Parks - Thematic map 1
 ![Exercise 5 Map 1 image](./images/Exercise5Map1PeterGerdzhikov.jpg)
 
 ## Exercise 5 Map 2
+### Biosphere Parks - Thematic map 1
 ![Exercise 5 Map 2 image](./images/Exercise5Map2PeterGerdzhikov.jpg)
 
 ## Exercise Three Maps Three Scenarios Map 1
