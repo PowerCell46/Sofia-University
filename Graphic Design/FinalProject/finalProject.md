@@ -1,81 +1,82 @@
-# Final Project Graphic Design
+# 🎨 **Final Project - Graphic Design**  
 
-## Exercise 1 Map
-### Population by districts, Bulgaria 2021
-![Exercise 1 Map image](./images/Exercise1MapPeterGerdzhikov.jpg)
+## 📌 **Table of Contents**  
+1. [Exercise 1: Population by Districts, Bulgaria 2021](#exercise-1-map)  
+2. [Exercise 2: Classifying Territories in Central Balkan](#exercise-2-map)  
+3. [Exercise 3: Various Economic & Environmental Data](#exercise-3-maps)  
+4. [Exercise 4: Population Data, Sofia, Bulgaria](#exercise-4-map)  
+5. [Exercise 5: Biosphere Parks - Thematic Maps](#exercise-5-maps)  
+6. [Exercise 6: Visualizing Terrain, Rila Mountain](#exercise-6-map)  
+7. [Exercise 7: Visible Territories from Mt. Musala](#exercise-7-map)  
+8. [Exercise 8: Import & Export of Goods](#exercise-8-maps)  
+9. [Special Maps & Cartographic Layouts](#special-maps)  
 
-## Exercise 2 Map
-### Classifying territories in Central Balkan
-![Exercise 2 Map image](./images/Exercise2MapPeterGerdzhikov.jpg)
+## 🌍 **Exercise 1 Map**  
+### 📊 Population by Districts, Bulgaria (2021)  
+![Population Map](./images/Exercise1MapPeterGerdzhikov.jpg)  
 
-<!-- Снимки - композиция -->
+## 🏔 **Exercise 2 Map**  
+### 🗺 Classifying Territories in Central Balkan  
+![Central Balkan Classification](./images/Exercise2MapPeterGerdzhikov.jpg)  
 
-## Exercise 3 Map 1
-### Parts of forrest territories in Burgas District
-![Exercise 3 Map 1 image](./images/Exercise3Map1PeterGerdzhikov.jpg)
+## 📊 **Exercise 3 Maps**  
 
-## Exercise 3 Map 2
-### Average income by district, Bulgaria 2020
-![Exercise 3 Map 2 image](./images/Exercise3Map2PeterGerdzhikov.jpg)
+### 🌲 **Forest Territories in Burgas District**  
+![Forest Map](./images/Exercise3Map1PeterGerdzhikov.jpg)  
 
-## Exercise 3 Map 3
-### Average income by district (Bar chart), Bulgaria 2020
-![Exercise 3 Map 3 image](./images/Exercise3Map3PeterGerdzhikov.jpg)
+### 💰 **Average Income by District, Bulgaria (2020)**  
+![Income Map](./images/Exercise3Map2PeterGerdzhikov.jpg)  
 
-<!-- Задание - композиция с данни от OSM -->
+### 📈 **Average Income (Bar Chart), Bulgaria (2020)**  
+![Income Bar Chart](./images/Exercise3Map3PeterGerdzhikov.jpg)  
 
-## Exercise 4
-### Population Data, Sofia, Bulgaria
-![Exercise 4 Map image](./images/Exercise4MapPeterGerdzhikov.jpg)
+## 🏙 **Exercise 4 Map**  
+### 📍 Population Data, Sofia, Bulgaria  
+![Sofia Population Map](./images/Exercise4MapPeterGerdzhikov.jpg)  
 
-<!-- Карти - Етна -->
+## 🌿 **Exercise 5 Maps: Biosphere Parks**  
 
-## Exercise 5 Map 1
-### Biosphere Parks - Thematic map 1
-![Exercise 5 Map 1 image](./images/Exercise5Map1PeterGerdzhikov.jpg)
+### **Biosphere Parks - Thematic Map 1**  
+![Biosphere Map 1](./images/Exercise5Map2PeterGerdzhikov.jpg)  
 
-## Exercise 5 Map 2
-### Biosphere Parks - Thematic map 1
-![Exercise 5 Map 2 image](./images/Exercise5Map2PeterGerdzhikov.jpg)
+### **Biosphere Parks - Thematic Map 2**  
+![Biosphere Map 2](./images/Exercise5Map1PeterGerdzhikov.jpg)  
 
-## Exercise Three Maps Three Scenarios Map 1
-### Coefficient of death, Bulgaria, Optimistic map
-![Exercise Three Maps Three Scenarios Map 1 image](./images/ExerciseThreeMapsThreeScenariosOptimisticPeterGerdzhikov.png)
+## ⚰ **Exercise Three Maps - Three Scenarios**  
 
-## Exercise Three Maps Three Scenarios Map 2
-### Coefficient of death, Bulgaria, Pessimistic map
-![Exercise Three Maps Three Scenarios Map 2 image](./images/ExerciseThreeMapsThreeScenariosPessimisticPeterGerdzhikov.png)
+### **📉 Coefficient of Death, Bulgaria (Optimistic)**  
+![Optimistic Scenario](./images/ExerciseThreeMapsThreeScenariosOptimisticPeterGerdzhikov.png)  
 
-## Exercise Three Maps Three Scenarios Map 3
-### Coefficient of death, Bulgaria, Realistic map
-![Exercise Three Maps Three Scenarios Map 3 image](./images/ExerciseThreeMapsThreeScenariosRealisticPeterGerdzhikov.png)
+### **📈 Coefficient of Death, Bulgaria (Pessimistic)**  
+![Pessimistic Scenario](./images/ExerciseThreeMapsThreeScenariosPessimisticPeterGerdzhikov.png)  
 
-## Visualization and cartographic layout January Map
-### Average temperatures for January (1970-2000)
-![Visualization and cartographic layout January Map image](./images/ExerciseVisualizationAndCatropgraphicLayoutJanPeterGerdzhikov.jpg)
+### **⚖ Coefficient of Death, Bulgaria (Realistic)**  
+![Realistic Scenario](./images/ExerciseThreeMapsThreeScenariosRealisticPeterGerdzhikov.png)  
 
-## Visualization and cartographic layout July Map
-### Average temperatures for July (1970-2000)
-![Visualization and cartographic layout July Map image](./images/ExerciseVisualizationAndCatropgraphicLayoutJulPeterGerdzhikov.jpg)
+## 🌡 **Special Maps: Cartographic Layouts & Weather Data**  
 
-## Exercise 6 Map
-### Visualizing terrain, Rila Mountain
-![Exercise 6 Map image](./images/Exercise6MapPeterGerdzhikov.jpg)
+### ❄ **January Average Temperatures (1970-2000)**  
+![January Temperatures](./images/ExerciseVisualizationAndCatropgraphicLayoutJanPeterGerdzhikov.jpg)  
 
-## Exercise 7 Map
-### Map of visible territories from Mt. Musala
-![Exercise 7 Map image](./images/Exercise7MapPeterGerdzhikov.jpg)
+### ☀ **July Average Temperatures (1970-2000)**  
+![July Temperatures](./images/ExerciseVisualizationAndCatropgraphicLayoutJulPeterGerdzhikov.jpg)  
 
-## Exercise Complementary Map
-### Attack of wolves on cattle, Izvorsko village
-![Exercise Complementary Map image](./images/ExerciseComplementaryMapPeterGerdzhikov.jpg)
+## ⛰ **Exercise 6 Map**  
+### 🏞 Visualizing Terrain, Rila Mountain  
+![Rila Mountain](./images/Exercise6MapPeterGerdzhikov.jpg)  
 
-## Exercise 8 Export Map
-### Export of goods
-![Exercise 8 Export Map](./images/Exercise8Map1PeterGerdzhikov.jpg)
+## 🔭 **Exercise 7 Map**  
+### 🌄 Visible Territories from Mt. Musala  
+![Mt. Musala](./images/Exercise7MapPeterGerdzhikov.jpg)  
 
-## Exercise 8 Import Map
-### Import of goods
-![Exercise 8 Import Map](./images/Exercise8Map2PeterGerdzhikov.jpg)
+## 🐺 **Exercise: Complementary Map**  
+### 🐾 Wolf Attacks on Cattle, Izvorsko Village  
+![Wolf Attack Map](./images/ExerciseComplementaryMapPeterGerdzhikov.jpg)  
 
-<!-- Viewpoints project -->
+## 📦 **Exercise 8 Maps: Trade Data**  
+
+### **🚢 Export of Goods**  
+![Export Map](./images/Exercise8Map1PeterGerdzhikov.jpg)  
+
+### **📥 Import of Goods**  
+![Import Map](./images/Exercise8Map2PeterGerdzhikov.jpg)
