@@ -185,6 +185,23 @@
 - 📝 **Статии в „Икономическа мисъл“ (списание на БАН)** – често публикуват актуални изследвания за демографските и регионалните предизвикателства.  
 - 📝 **Статии в „Управление и устойчиво развитие“** (ЮЗУ, УНСС) – фокус върху устойчиво градско планиране, проекти и стратегии.
 
+### 3. Видео Материали
+
+🎥 World Bank – The Urbanization Challenge
+Short explainer on why urbanization matters, how cities influence economic growth, and the challenges of rapid urban expansion.
+
+🎥 EU Science Hub – Demographic Scenarios for the EU
+A look at demographic trends within the European Union, showing how ageing and migration shape urban and rural areas.
+
+🎥 TEDx – Rethinking Cities and Demographics
+Although not specific to Bulgaria, this talk discusses universal trends in how demographic shifts are transforming cities and what policymakers can do.
+
+🎥 Bulgaria’s Population Challenges
+A segment from Bulgarian National Television (BNT) discussing demographic decline, internal migration, and prospects for economic growth.
+
+🎥 Urbanization in Eastern Europe: A Historical & Economic Perspective
+Explores how former socialist states, including Bulgaria, have managed urbanization differently from Western Europe and what lessons can be learned.
+
 ### 4. Политики и добри практики
 
 - 🏙️ **Градски стратегии на общинско ниво** – София, Пловдив, Варна, Бургас, Русе.  
@@ -199,5 +216,3 @@
 - 🌆 Урбанизацията в България преминава през различни фази, свързани с политическите и икономическите промени.  
 - 👥 Демографската криза усложнява традиционните модели на развитие, като поставя нови предизвикателства пред регионите.  
 - 🤔 Има нужда от комплексен подход – не само икономически (инвестиции и инфраструктура), но и демографски (насърчаване на раждаемостта, имиграция на висококвалифицирана работна ръка, регионална политика), за да се стимулира по-равномерно и устойчиво развитие на градските селища.
-
----
