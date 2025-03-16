@@ -1,11 +1,14 @@
 City,Region,Population_2010,Population_2020,Area_km2
-Sofia,Southwest,1200000,1300000,492
-Plovdiv,SouthCentral,340000,348000,101
-Varna,Northeast,330000,335000,238
-Burgas,Southeast,202000,209000,253
-Ruse,NorthCentral,148000,134000,127
-Stara Zagora,SouthCentral,138000,136000,85
-Pleven,Northwest,106000,95000,86
-Dobrich,Northeast,92000,86000,109
-Sliven,Southeast,96000,83000,193
-Vidin,Northwest,63000,46000,63
+Sofia,Southwest,1270284,1308412,492
+Plovdiv,SouthCentral,338153,346893,102
+Varna,Northeast,334870,336505,238
+Burgas,Southeast,200271,202694,253
+Ruse,NorthCentral,149642,142902,127
+Stara Zagora,SouthCentral,138272,136363,85
+Pleven,Northwest,106011,94669,85
+Sliven,Southeast,95399,89848,193
+Dobrich,Northeast,91030,83584,109
+Vidin,Northwest,64526,48071,63
+Shumen,Northeast,88283,80559,136
+Haskovo,SouthCentral,76000,71000,36
+Blagoevgrad,Southwest,78000,72000,28
