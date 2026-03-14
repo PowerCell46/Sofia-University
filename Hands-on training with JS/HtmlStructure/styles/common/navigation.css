@@ -1,0 +1,31 @@
+.navigation {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0rem;
+    /* background-color: brown; */
+}
+
+.nav-links-wrapper {
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    background-color: #04364a;
+    border-radius: 0.4rem;
+    box-shadow: var(--default-box-shadow);
+}
+
+.nav-links {
+    color: var(--white-text-color);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.nav-links-wrapper li {
+    transition: var(--default-transition);
+}
+
+.nav-links-wrapper li:hover {
+    text-decoration: line-through;
+    transform: translateY(-0.05rem);
+}

@@ -1,0 +1,18 @@
+:root {
+    /* Colors */
+    --white-text-color: #fffefe;
+    --application-background-color: #1b2a41;
+    --application-background-color-darker: #0d1321;
+    --blue-teal-color: #176b87;
+    --blue-teal-color-darker: #104b5f;
+    --dark-red-color: #780000;
+    --dark-red-color-darker: #600000;
+
+    --default-border-radius: 0.3rem;
+
+    --default-transition: 300ms ease-in-out;
+
+    --default-text-shadow: 3px 3px 4px rgba(66, 68, 90, 1);
+
+    --default-box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.6);
+}

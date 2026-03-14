@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/programming-logo.svg" type="image/x-icon">
+    <title>Online Education</title>
+    <link rel="stylesheet" href="../styles/views/view-authentication-styles.css">
+</head>
+<body>
+    <nav class="navigation">
+        <ul class="nav-links-wrapper">
+            <li><a class="nav-links" href="./index.html">Начало</a></li>
+            <li><a class="nav-links" href="./courses.html">Курсове</a></li>
+            <li><a class="nav-links" href="./contacts.html">Контакти</a></li>
+            <li><a class="nav-links" href="./login.html">Вход</a></li>
+            <li><a class="nav-links" href="./register.html">Регистрация</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="side-a"></div>
+
+        <div class="side-b">
+            <form method="POST" action="/api/auth/login">
+                <h1>Вход</h1>
+                <input name="username" type="text" placeholder="Потребителско име">
+                <input name="password" type="password" placeholder="Парола">
+                <button>Потвърди</button>
+                <p>Нямаш акаунт? <a href="./register.html">Регистрация</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
