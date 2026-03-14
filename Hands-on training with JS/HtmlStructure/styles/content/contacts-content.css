@@ -1,0 +1,114 @@
+.content-wrapper {
+    padding: 1rem 0rem;
+    display: flex;
+    justify-content: center;
+    /* background-color: aliceblue; */
+}
+
+.content {
+    width: 65%;
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    padding: 5rem 2.5rem;
+    padding-bottom: 6rem;
+    border-radius: 0.3rem;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    box-shadow: var(--default-box-shadow);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url("../../assets/backgrounds/coding-background-contacts.png");
+}
+
+.left-sub-content {
+    width: 70%;
+    padding: 1rem 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    /* background-color: aqua; */
+}
+
+.left-sub-content h1 {
+    font-size: 1.5rem;
+}
+
+.left-sub-content p span {
+    margin-right: 0.3rem;
+}
+
+.right-sub-content {
+    gap: 2vh;
+    display: flex;
+    font-weight: 500;
+    padding: 3rem 2rem;
+    flex-direction: column;
+    border-radius: 0.3rem;
+    color: var(--blue-teal-color);
+    background-color: var(--white-text-color);
+}
+
+.right-sub-content h3 {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px rgba(66, 68, 90, 1);
+}
+
+.preferences-buttons-wrapper {
+    gap: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* background-color: aqua; */
+}
+
+.preferences-buttons-wrapper button {
+    padding: 0.4rem;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 0.3rem;
+    border: 0.5px solid gray;
+    color: rgb(102, 102, 102);
+    transition: var(--default-transition);
+    background-color: var(--white-text-color);
+    text-shadow: 0.5px 0.5px 1.5px rgba(66, 68, 90, 1);
+}
+
+.preferences-buttons-wrapper .preference-selected {
+    background-color: #104b5f;
+    border: 0.5px solid black;
+    color: var(--white-text-color);
+}
+
+.preferences-buttons-wrapper button:hover {
+    border: 0.5px solid black;
+    background-color: #176b87;
+    transform: translateY(-0.1rem);
+    color: var(--white-text-color);
+}
+
+.right-sub-content input {
+    padding: 0.5rem;
+    border: 1px solid gray;
+    border-radius: 0.3rem;
+}
+
+.right-sub-content input:focus {
+    outline: none;
+    border: 1.4px solid gray;
+}
+
+.send-form-btn {
+    cursor: pointer;
+    border-radius: 0.3rem;
+    padding: 0.5rem 0.5rem;
+    border: 0.5px solid gray;
+    color: var(--white-text-color);
+    transition: var(--default-transition);
+    background-color: var(--blue-teal-color);
+    text-shadow: 0.5px 0.5px 1.5px rgba(66, 68, 90, 1);
+}
+
+.send-form-btn:hover {
+    transform: translateY(-0.1rem);
+    background-color: var(--blue-teal-color-darker);
+}

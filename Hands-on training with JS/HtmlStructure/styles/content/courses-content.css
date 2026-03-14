@@ -1,0 +1,73 @@
+.content-wrapper {
+    padding: 1rem 0rem;
+    display: flex;
+    justify-content: center;
+    /* background-color: aliceblue; */
+}
+
+.content {
+    width: 50%;
+    gap: 1.5rem;
+    display: flex;
+    position: relative;
+    background-size: cover;
+    flex-direction: column;
+    padding: 2.5rem 2.5rem;
+    background-position: top;
+    background-repeat: no-repeat;
+    transition: opacity 0.3s ease;
+    box-shadow: var(--default-box-shadow);
+    border-radius: var(--default-border-radius);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../../assets/backgrounds/coding-background-courses.png");
+}
+
+.content.fade {
+    opacity: 0;
+}
+
+.content img {
+    width: 800px;
+    align-self: center;
+    box-shadow: var(--default-box-shadow);
+    border: 3px dashed var(--blue-teal-color);
+    border-radius: var(--default-border-radius);
+}
+
+.content h2 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    font-style: italic;
+    align-self: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.content p span {
+    font-weight: 600;
+}
+
+#arrow-left {
+    top: 50%;
+    left: -2.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    font-weight: 900;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+#arrow-right {
+    top: 50%;
+    right: -2.5rem;
+    font-size: 2rem;
+    font-weight: 900;
+    cursor: pointer;
+    position: absolute;
+    transform: translateY(-50%);
+    transition: var(--default-transition);
+}
+
+#arrow-left:hover,
+#arrow-right:hover {
+    color: #a0afc3;
+}
