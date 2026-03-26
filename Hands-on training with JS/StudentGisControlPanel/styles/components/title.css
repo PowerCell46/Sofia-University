@@ -1,0 +1,27 @@
+.heading-wrapper {
+    padding: 2.25rem 0rem;
+    display: flex;
+    gap: 2.5vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: #5e503f; */
+}
+
+.heading-wrapper h1 {
+    font-size: 2.5rem;
+    font-style: normal;
+    -webkit-animation: text-pop-up-top 10s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+    animation: text-pop-up-top 10s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+}
+
+#greeting-heading {
+    background: linear-gradient(90deg, #faa307, #eae0d5, #faa307, #eae0d5, #faa307);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-wave 8s ease infinite;
+    font-size: 1.75rem;
+}

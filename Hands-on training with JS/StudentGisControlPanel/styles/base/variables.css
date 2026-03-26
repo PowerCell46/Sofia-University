@@ -1,0 +1,6 @@
+:root {
+    --white-text-color: #eae0d5;
+    --font-family: "Iosevka Charon", monospace;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --transition: 600ms ease-in-out;
+}

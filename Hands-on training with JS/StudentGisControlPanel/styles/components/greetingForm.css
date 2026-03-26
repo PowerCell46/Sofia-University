@@ -1,0 +1,56 @@
+.greeting-form-wrapper {
+    padding: 1rem 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #127475; */
+}
+
+.greeting-form {
+    gap: 4vh;
+    padding: 4rem 7rem;
+    display: flex;
+    flex-direction: column;
+    border: 2px dashed var(--white-text-color);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../images/earth.png");
+    box-shadow: var(--box-shadow);
+}
+
+.greeting-form input {
+    border: none;
+    font-size: 1rem;
+    padding: 0.3rem 0.75rem;
+    box-shadow: var(--box-shadow);
+    font-family: var(--font-family);
+}
+
+.greeting-form input:focus {
+    outline: none;
+}
+
+.greeting-form button {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: 2px solid transparent;
+    border-image: linear-gradient(90deg, #ff4500, #faa307, #ff4500) 1;
+    background: linear-gradient(90deg, #ff4500, #faa307, #ff4500);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: 900;
+    transition: var(--transition);
+}
+
+.greeting-form button:hover {
+    transform: translateY(-0.1rem);
+    border-image: linear-gradient(90deg, #faa307, #ff4500, #faa307) 1;
+    background: linear-gradient(90deg, #faa307, #ff4500, #faa307);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
