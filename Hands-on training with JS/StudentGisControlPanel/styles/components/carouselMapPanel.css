@@ -1,0 +1,38 @@
+.carousel-map-panel-wrapper {
+    padding: 3rem 0rem;
+    display: flex;
+    justify-content: center;
+    /* background-color: darkgreen; */
+}
+
+.carousel-map-panel {
+    gap: 2.25vh;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: var(--box-shadow);
+    background-image: linear-gradient(to right bottom, #013a63, #013e69, #01416f, #014576, #01497c);
+}
+
+.carousel-map-panel img {
+    height: 40vh;
+    width: 35vw;
+    border: 2px dashed var(--white-text-color);
+    box-shadow: var(--box-shadow);
+    transition: opacity 0.6s ease-in-out;
+}
+
+.carousel-map-panel h2 {
+    font-size: 2rem;
+}
+
+.carousel-map-panel p {
+    font-size: 1.1rem;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.carousel-map-panel img.fading,
+.carousel-map-panel p.fading {
+    opacity: 0;
+}

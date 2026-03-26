@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/planet-favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    </style>
+    <title>Student GIS control panel</title>
+    <script src="./code/dist/bundle.js" defer></script>
+</head>
+
+<body>
+    <!-- 
+        1. Заглавие: Страницата трябва да има заглавие „Student GIS Control Panel“.
+    -->
+    <div class="heading-wrapper">
+        <h1>Student GIS Control Panel</h1>
+        <h3 id="greeting-heading">Добре дошли</h3>
+    </div>
+
+    <!-- 
+        2. Поле за въвеждане
+        Да има input поле, в което потребителят въвежда своето име.
+        3. Бутон „Покажи съобщение“
+        При натискане на бутона да се извика функция, която:
+        • взима стойността от input полето
+        • показва текст в страницата във формат „Здравей, {име}“
+    -->
+    <div class="greeting-form-wrapper">
+        <form 
+            class="greeting-form" 
+            action="localhost:8080/api/base/say-hello" 
+            method="post"
+        >
+            <input type="text" name="name" placeholder="Име">
+            <button>Покажи съобщение</button>
+        </form>
+    </div>
+
+    <!-- 
+        4. Бутон „Покажи панел“
+        Да показва скрит елемент от тип div.
+        5. Бутон „Скрий панел“
+        Да скрива същия div елемент.
+        6. Панел (div)
+        Панелът трябва да съдържа:
+        • текст „Map will be displayed here“
+        • текст „Layer: Cities“
+        • текст „Scale: 1:50000“
+        7. Бутон „Смени слой“
+        При натискане да променя текста „Layer: Cities“ на „Layer: Rivers“. 
+    -->
+    <div class="carousel-map-panel-wrapper">
+        <div class="carousel-map-panel">
+            <h2>Little Saint James</h2>
+            <p>Natural color</p>
+            <img 
+                src="./images/naturalColor.png" 
+                alt="Natural color Saint James 21.03.2026"
+            >
+        </div>
+    </div>
+</body>
+
+</html>

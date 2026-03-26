@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "amd",                   // required for outFile (or "system")
+    "outFile": "./dist/bundle.js",     // all TS compiled into one file
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["./*.ts"]           // adjust to your source layout
+}
+
+// ! run "tsc" to transpile the typescript files to /dist/bundle.js
