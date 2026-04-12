@@ -1,0 +1,22 @@
+.app-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    padding-top: 28px;
+    padding-bottom: 48px;
+}
+
+.view-container {
+    width: 100%;
+    max-width: 400px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.view-container.view-hidden {
+    opacity: 0;
+    transform: translateY(10px);
+}

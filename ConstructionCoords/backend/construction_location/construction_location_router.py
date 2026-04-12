@@ -10,7 +10,7 @@ from construction_location.entities.construction_location import ConstructionLoc
 from database import get_db
 
 
-logger = logging.getLogger("app.routes.construction_location")
+logger: logging.Logger = logging.getLogger("app.routes.construction_location")
 router: APIRouter = APIRouter(prefix="/api/construction-location")
 
 
@@ -18,7 +18,7 @@ router: APIRouter = APIRouter(prefix="/api/construction-location")
 def persist_construction_location(request_data: CreateConstructionLocationRequestDTO, db: Session = Depends(get_db)):
     logger.info("Creating construction location: lat=%s, lng=%s", request_data.latitude, request_data.longitude)
 
-    db_construction_location = ConstructionLocation(**request_data.model_dump())
+    db_construction_location: ConstructionLocation = ConstructionLocation(**request_data.model_dump())
 
     try:
         db.add(db_construction_location)

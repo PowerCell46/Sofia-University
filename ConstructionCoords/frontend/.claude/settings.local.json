@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(cp -r frontend-temp/* frontend/)",
+      "Bash(cp frontend-temp/.gitignore frontend/)",
+      "Bash(cp frontend-temp/.eslintrc.cjs frontend/)",
+      "Bash(rm -rf frontend-temp)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npm run:*)",
+      "WebFetch(domain:localhost)",
+      "Bash(curl -s http://localhost:5173/)"
+    ]
+  }
+}
