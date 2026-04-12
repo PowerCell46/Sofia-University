@@ -54,6 +54,7 @@ function App() {
             setCoords({ latitude: lat, longitude: lon });
             setShouldAutoFocus(false);
             transitionTo("success");
+
         } catch {
             setCoords({ latitude: lat, longitude: lon });
             setShouldAutoFocus(false);

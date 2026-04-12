@@ -1,7 +1,7 @@
 .caution-stripe {
     position: fixed;
     top: 0;
-    left: 0;
+    left: -28px;
     right: 0;
     height: 4px;
     z-index: 100;
@@ -13,4 +13,15 @@
         var(--bg-primary) 28px
     );
     animation: cautionScroll 1.5s linear infinite;
+    will-change: transform;
+    transition: none;
+}
+
+@keyframes cautionScroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(28px);
+    }
 }
