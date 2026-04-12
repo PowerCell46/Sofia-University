@@ -1,0 +1,192 @@
+/* ===== Dark Theme (default) ===== */
+:root,
+[data-theme="dark"] {
+    --bg-primary: #1A1A1A;
+    --bg-surface: #2A2A2A;
+    --accent: #F5A623;
+    --accent-dark: #D4891A;
+    --accent-hover: #FFB83D;
+    --text-primary: #E0E0E0;
+    --text-secondary: #888888;
+    --text-footer: #444444;
+    --error: #FF4136;
+    --error-glow: rgba(255, 65, 54, 0.12);
+    --accent-glow: rgba(245, 166, 35, 0.15);
+    --accent-glow-strong: rgba(245, 166, 35, 0.3);
+    --border-color: #444444;
+    --coord-bg: #1A1A1A;
+}
+
+/* ===== Light Theme ===== */
+[data-theme="light"] {
+    --bg-primary: #F5F5F5;
+    --bg-surface: #FFFFFF;
+    --accent: #D4891A;
+    --accent-dark: #B3720F;
+    --accent-hover: #E89A2E;
+    --text-primary: #1A1A1A;
+    --text-secondary: #666666;
+    --text-footer: #AAAAAA;
+    --error: #D32F2F;
+    --error-glow: rgba(211, 47, 47, 0.12);
+    --accent-glow: rgba(212, 137, 26, 0.15);
+    --accent-glow-strong: rgba(212, 137, 26, 0.3);
+    --border-color: #CCCCCC;
+    --coord-bg: #F0F0F0;
+}
+
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.8s ease, color 0.8s ease, border-color 0.8s ease;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+#root {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Animations ===== */
+@keyframes cautionScroll {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 28px 0;
+    }
+}
+
+@keyframes slideDownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10% {
+        transform: translateX(-6px);
+    }
+    20% {
+        transform: translateX(6px);
+    }
+    30% {
+        transform: translateX(-5px);
+    }
+    40% {
+        transform: translateX(5px);
+    }
+    50% {
+        transform: translateX(-3px);
+    }
+    60% {
+        transform: translateX(3px);
+    }
+    70% {
+        transform: translateX(-1px);
+    }
+    80% {
+        transform: translateX(1px);
+    }
+}
+
+@keyframes fadeSlideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes checkCircleScale {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulseRing {
+    0% {
+        box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 0 16px rgba(245, 166, 35, 0);
+    }
+}
+
+@keyframes staggerFadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loadSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loadSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

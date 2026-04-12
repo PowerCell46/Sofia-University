@@ -1,0 +1,16 @@
+.caution-stripe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    z-index: 100;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--accent) 0,
+        var(--accent) 20px,
+        var(--bg-primary) 20px,
+        var(--bg-primary) 28px
+    );
+    animation: cautionScroll 1.5s linear infinite;
+}
