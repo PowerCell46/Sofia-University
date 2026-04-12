@@ -3,7 +3,7 @@ import logging
 from fastapi import FastAPI, HTTPException, Request
 from pydantic import ValidationError
 from starlette.responses import JSONResponse
-
+from fastapi.middleware.cors import CORSMiddleware
 from construction_location.construction_location_router import router as construction_location_router
 from database import Base, engine
 
@@ -14,6 +14,13 @@ logger: logging.Logger = logging.getLogger("app")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)-8s | %(message)s") # TODO: Make it more beautifully formated
 
 app: FastAPI = FastAPI(title="ConstructionCoords Backend application")
+
+app.add_middleware(
+      CORSMiddleware,
+      allow_origins=["*"],
+      allow_methods=["*"],
+      allow_headers=["*"],
+  )
 
 app.include_router(construction_location_router)
 

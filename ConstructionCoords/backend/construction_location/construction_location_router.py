@@ -1,6 +1,7 @@
 import logging
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from construction_location.dtos.request.create_construction_location_request import CreateConstructionLocationRequest
@@ -13,15 +14,19 @@ logger = logging.getLogger("app.routes.construction_location")
 router: APIRouter = APIRouter(prefix="/api/construction-location")
 
 
-@router.post("", response_model=ConstructionLocationResponse)
+@router.post("", response_model=ConstructionLocationResponse, status_code=201)
 def persist_construction_location(request_data: CreateConstructionLocationRequest, db: Session = Depends(get_db)):
-    logger.info("---> POST request on /api/construction-location.")
+    logger.info("Creating construction location: lat=%s, lng=%s", request_data.latitude, request_data.longitude)
 
     db_construction_location = ConstructionLocation(**request_data.model_dump())
 
-    db.add(db_construction_location)
-    db.commit()
-    db.refresh(db_construction_location)
+    try:
+        db.add(db_construction_location)
+        db.commit()
+        db.refresh(db_construction_location)
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(status_code=409, detail="Invalid state error occurred.")
 
     return db_construction_location
 
