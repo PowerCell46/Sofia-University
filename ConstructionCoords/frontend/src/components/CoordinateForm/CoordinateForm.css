@@ -97,6 +97,11 @@
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
+[data-theme="light"] .submit-button {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
 .submit-button:hover {
     background-color: var(--accent-dark);
     transform: translateY(-2px);
