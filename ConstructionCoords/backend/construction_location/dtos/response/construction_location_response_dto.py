@@ -3,7 +3,7 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict
 
 
-class ConstructionLocationResponse(BaseModel):
+class ConstructionLocationResponseDTO(BaseModel):
     id: UUID
     latitude: float
     longitude: float
