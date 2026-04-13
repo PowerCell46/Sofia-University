@@ -95,16 +95,206 @@
     border: 2px solid var(--accent);
     border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.45s ease-out, color 0.45s ease-out, transform 0.2s ease, border-color 0.45s ease-out;
     animation: staggerFadeSlideUp 0.4s ease 0.4s both;
 }
 
-.back-button:hover {
-    background-color: rgba(245, 166, 35, 0.08);
-    border-color: var(--accent-dark);
-    transform: translateY(-2px);
+@media (hover: hover) {
+    .back-button:hover {
+        background-color: var(--accent);
+        color: var(--bg-primary);
+        transform: translateY(-2px);
+    }
 }
 
 .back-button:active {
     transform: translateY(0);
+}
+
+/* Scale-up for large displays */
+@media (min-width: 1920px) {
+    .success-view {
+        gap: 28px;
+        padding: 52px 36px;
+    }
+
+    .check-circle {
+        width: 72px;
+        height: 72px;
+    }
+
+    .check-svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .success-title {
+        font-size: 23px;
+    }
+
+    .coord-display {
+        padding: 20px 22px;
+        gap: 16px;
+    }
+
+    .coord-label {
+        font-size: 13px;
+    }
+
+    .coord-value {
+        font-size: 18px;
+    }
+
+    .coord-divider {
+        height: 28px;
+    }
+
+    .back-button {
+        padding: 18px 34px;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .success-view {
+        gap: 34px;
+        padding: 70px 44px;
+        border-radius: 10px;
+    }
+
+    .check-circle {
+        width: 92px;
+        height: 92px;
+    }
+
+    .check-svg {
+        width: 46px;
+        height: 46px;
+    }
+
+    .success-title {
+        font-size: 30px;
+    }
+
+    .coord-display {
+        padding: 24px 30px;
+        gap: 20px;
+        border-radius: 8px;
+    }
+
+    .coord-label {
+        font-size: 15px;
+    }
+
+    .coord-value {
+        font-size: 23px;
+    }
+
+    .coord-divider {
+        height: 36px;
+    }
+
+    .back-button {
+        padding: 22px 44px;
+        font-size: 20px;
+        border-radius: 8px;
+    }
+}
+
+@media (min-width: 3440px) {
+    .success-view {
+        gap: 42px;
+        padding: 88px 56px;
+        border-width: 3px;
+        border-radius: 12px;
+    }
+
+    .check-circle {
+        width: 112px;
+        height: 112px;
+    }
+
+    .check-svg {
+        width: 56px;
+        height: 56px;
+    }
+
+    .success-title {
+        font-size: 37px;
+    }
+
+    .coord-display {
+        padding: 30px 36px;
+        gap: 22px;
+        border-radius: 10px;
+    }
+
+    .coord-label {
+        font-size: 18px;
+    }
+
+    .coord-value {
+        font-size: 28px;
+    }
+
+    .coord-divider {
+        height: 46px;
+        width: 2px;
+    }
+
+    .back-button {
+        padding: 28px 56px;
+        font-size: 23px;
+        border-width: 3px;
+        border-radius: 10px;
+    }
+}
+
+@media (min-width: 3840px) {
+    .success-view {
+        gap: 48px;
+        padding: 104px 64px;
+        border-width: 3px;
+        border-radius: 14px;
+    }
+
+    .check-circle {
+        width: 132px;
+        height: 132px;
+    }
+
+    .check-svg {
+        width: 66px;
+        height: 66px;
+    }
+
+    .success-title {
+        font-size: 44px;
+    }
+
+    .coord-display {
+        padding: 34px 44px;
+        gap: 28px;
+        border-radius: 12px;
+    }
+
+    .coord-label {
+        font-size: 21px;
+    }
+
+    .coord-value {
+        font-size: 33px;
+    }
+
+    .coord-divider {
+        height: 54px;
+        width: 2px;
+    }
+
+    .back-button {
+        padding: 32px 66px;
+        font-size: 28px;
+        border-width: 3px;
+        border-radius: 12px;
+    }
 }

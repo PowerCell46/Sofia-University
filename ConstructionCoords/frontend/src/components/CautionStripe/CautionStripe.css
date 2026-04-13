@@ -25,3 +25,28 @@
         transform: translateX(28px);
     }
 }
+
+/* Scale-up for large displays */
+@media (min-width: 1920px) {
+    .caution-stripe {
+        height: 5px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .caution-stripe {
+        height: 6px;
+    }
+}
+
+@media (min-width: 3440px) {
+    .caution-stripe {
+        height: 8px;
+    }
+}
+
+@media (min-width: 3840px) {
+    .caution-stripe {
+        height: 10px;
+    }
+}
