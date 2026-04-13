@@ -22,17 +22,17 @@ logging.basicConfig(
 app: FastAPI = FastAPI(title="ConstructionCoords Backend application")
 
 app.add_middleware(
-      CORSMiddleware,
-      allow_origins=["*"],
-      allow_methods=["*"],
-      allow_headers=["*"],
-  )
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(construction_location_router)
 
 
 @app.exception_handler(ValidationError)
-async def handle_validation_error(request: Request, ex: ValidationError):
+async def handle_validation_exception(request: Request, ex: ValidationError):
     return JSONResponse(status_code=422, content={"message": ex.errors()})
 
 
@@ -42,7 +42,7 @@ async def handle_http_exception(request: Request, ex: HTTPException):
 
 
 @app.exception_handler(IntegrityError)
-async def handle_general_exception(request: Request, ex: IntegrityError):
+async def handle_integrity_exception(request: Request, ex: IntegrityError):
     logger.error("Handling Integrity exception.", exc_info=True)
     return JSONResponse(status_code=500, content={"message": "Invalid persistence state."})
 
