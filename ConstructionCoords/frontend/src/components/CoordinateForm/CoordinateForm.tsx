@@ -3,7 +3,7 @@ import "./CoordinateForm.css";
 
 
 interface CoordinateFormProps {
-    onSuccess: (lat: number, lon: number) => void;
+    onSubmit: (lat: number, lon: number) => Promise<void>;
     autoFocus?: boolean;
 }
 
@@ -59,10 +59,11 @@ function parseCoordinates(input: string): ParseResult {
     return { ok: true, lat, lon };
 }
 
-function CoordinateForm({ onSuccess, autoFocus }: CoordinateFormProps) {
+function CoordinateForm({ onSubmit, autoFocus }: CoordinateFormProps) {
     const [value, setValue] = useState("");
     const [error, setError] = useState("");
     const [shaking, setShaking] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
@@ -71,16 +72,35 @@ function CoordinateForm({ onSuccess, autoFocus }: CoordinateFormProps) {
         }
     }, [autoFocus]);
 
-    const handleSubmit = () => {
-        const result = parseCoordinates(value);
-        if (!result.ok) {
-            setError(result.error);
-            setShaking(true);
-            setTimeout(() => setShaking(false), 450);
+    const triggerError = (message: string) => {
+        setError(message);
+        setShaking(true);
+        setTimeout(() => setShaking(false), 450);
+    };
+
+    const handleSubmit = async () => {
+        if (submitting) {
             return;
         }
+
+        const result = parseCoordinates(value);
+        if (!result.ok) {
+            triggerError(result.error);
+            return;
+        }
+
         setError("");
-        onSuccess(result.lat, result.lon);
+        setSubmitting(true);
+
+        try {
+            await onSubmit(result.lat, result.lon);
+
+        } catch {
+            triggerError("Could not submit coordinates. Please try again.");
+
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -132,8 +152,16 @@ function CoordinateForm({ onSuccess, autoFocus }: CoordinateFormProps) {
                 className="submit-button load-slide-up-delay"
                 onClick={handleSubmit}
                 type="button"
+                disabled={submitting}
             >
-                Submit Coordinates
+                {submitting ? (
+                    <span className="submit-button-content">
+                        <span className="spinner" aria-hidden="true" />
+                        Submitting
+                    </span>
+                ) : (
+                    "Submit Coordinates"
+                )}
             </button>
         </div>
     );

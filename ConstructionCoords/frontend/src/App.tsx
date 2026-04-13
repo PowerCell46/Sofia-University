@@ -39,27 +39,20 @@ function App() {
         }, 300);
     }, []);
 
-    const handleSuccess = useCallback(async (lat: number, lon: number) => {
-        try {
-            const response = await fetch(API_ENDPOINTS.CONSTRUCTION_LOCATION, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ latitude: lat, longitude: lon }),
-            });
+    const handleSubmit = useCallback(async (lat: number, lon: number) => {
+        const response = await fetch(API_ENDPOINTS.CONSTRUCTION_LOCATION, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ latitude: lat, longitude: lon }),
+        });
 
-            if (!response.ok) {
-                throw new Error(`Server error: ${response.status}`);
-            }
-
-            setCoords({ latitude: lat, longitude: lon });
-            setShouldAutoFocus(false);
-            transitionTo("success");
-
-        } catch {
-            setCoords({ latitude: lat, longitude: lon });
-            setShouldAutoFocus(false);
-            transitionTo("success");
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
         }
+
+        setCoords({ latitude: lat, longitude: lon });
+        setShouldAutoFocus(false);
+        transitionTo("success");
     }, [transitionTo]);
 
     const handleBack = useCallback(() => {
@@ -75,7 +68,7 @@ function App() {
                 <div className={`view-container${hidden ? " view-hidden" : ""}`}>
                     {view === "form" ? (
                         <CoordinateForm
-                            onSuccess={handleSuccess}
+                            onSubmit={handleSubmit}
                             autoFocus={shouldAutoFocus}
                         />
                     ) : (

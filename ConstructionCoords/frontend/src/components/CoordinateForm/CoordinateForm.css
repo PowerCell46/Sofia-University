@@ -113,6 +113,40 @@
     transform: translateY(0);
 }
 
+.submit-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+
+@media (hover: hover) {
+    .submit-button:disabled:hover {
+        background-color: var(--accent);
+        transform: none;
+    }
+}
+
+.submit-button-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* Page load animations */
 .load-slide-up,
 .load-slide-up-delay {
