@@ -1,5 +1,4 @@
 import logging
-from typing import Type
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.exc import IntegrityError
@@ -34,7 +33,7 @@ def persist_construction_location(request_data: CreateConstructionLocationReques
 
 @router.get("", response_model=list[ConstructionLocationResponseDTO], status_code=200)
 def fetch_constructions_locations(page: int = Query(0, ge=0), size: int = Query(500, ge=1, le=1_000), db: Session = Depends(get_db)):
-    constructions_locations: list[Type[ConstructionLocation]] = (
+    constructions_locations: list[ConstructionLocation] = (
         db.query(ConstructionLocation)
         .offset(page * size)
         .limit(size)
