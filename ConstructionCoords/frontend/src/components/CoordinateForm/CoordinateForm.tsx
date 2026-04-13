@@ -7,26 +7,56 @@ interface CoordinateFormProps {
     autoFocus?: boolean;
 }
 
-function parseCoordinates(input: string): { lat: number; lon: number } | null {
-    const cleaned = input.replace(/[()]/g, "").trim();
-    const parts = cleaned.split(/[\s,]+/).filter(Boolean);
+const COORDINATE_FORMAT_PATTERN = /^\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)$/;
 
-    if (parts.length !== 2) {
-        return null;
+type ParseResult =
+    | { ok: true; lat: number; lon: number }
+    | { ok: false; error: string };
+
+function validateLatitude(value: number): string | null {
+    if (!(value >= -90 && value <= 90)) {
+        return "Latitude must be between -90 and 90 degrees.";
+    }
+    return null;
+}
+
+function validateLongitude(value: number): string | null {
+    if (!(value >= -180 && value <= 180)) {
+        return "Longitude must be between -180 and 180 degrees.";
+    }
+    return null;
+}
+
+function parseCoordinates(input: string): ParseResult {
+    const match = input.trim().match(COORDINATE_FORMAT_PATTERN);
+    if (!match) {
+        return {
+            ok: false,
+            error: "Invalid input. Use format (latitude, longitude).",
+        };
     }
 
-    const lat = parseFloat(parts[0]);
-    const lon = parseFloat(parts[1]);
+    const lat = parseFloat(match[1]);
+    const lon = parseFloat(match[2]);
 
     if (isNaN(lat) || isNaN(lon)) {
-        return null;
+        return {
+            ok: false,
+            error: "Invalid input. Use format (latitude, longitude).",
+        };
     }
 
-    if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
-        return null;
+    const latError = validateLatitude(lat);
+    if (latError) {
+        return { ok: false, error: latError };
     }
 
-    return { lat, lon };
+    const lonError = validateLongitude(lon);
+    if (lonError) {
+        return { ok: false, error: lonError };
+    }
+
+    return { ok: true, lat, lon };
 }
 
 function CoordinateForm({ onSuccess, autoFocus }: CoordinateFormProps) {
@@ -43,8 +73,8 @@ function CoordinateForm({ onSuccess, autoFocus }: CoordinateFormProps) {
 
     const handleSubmit = () => {
         const result = parseCoordinates(value);
-        if (!result) {
-            setError("Invalid input. Use format (40.7128, -74.0060).");
+        if (!result.ok) {
+            setError(result.error);
             setShaking(true);
             setTimeout(() => setShaking(false), 450);
             return;
@@ -83,7 +113,7 @@ function CoordinateForm({ onSuccess, autoFocus }: CoordinateFormProps) {
                         ref={inputRef}
                         type="text"
                         className={`coord-input${error ? " input-error" : ""}`}
-                        placeholder="40.7128, -74.0060"
+                        placeholder="(40.7128, -74.0060)"
                         value={value}
                         onChange={handleChange}
                         onKeyDown={handleKeyDown}

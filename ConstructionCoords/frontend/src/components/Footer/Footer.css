@@ -12,3 +12,35 @@
     color: var(--text-footer);
     font-family: 'IBM Plex Mono', 'Courier New', monospace;
 }
+
+/* Scale-up for large displays */
+@media (min-width: 1920px) {
+    .footer {
+        padding: 14px 28px;
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .footer {
+        padding: 18px 34px;
+        font-size: 16px;
+        letter-spacing: 1.25px;
+    }
+}
+
+@media (min-width: 3440px) {
+    .footer {
+        padding: 22px 44px;
+        font-size: 19px;
+        letter-spacing: 1.75px;
+    }
+}
+
+@media (min-width: 3840px) {
+    .footer {
+        padding: 28px 54px;
+        font-size: 22px;
+        letter-spacing: 2.25px;
+    }
+}
