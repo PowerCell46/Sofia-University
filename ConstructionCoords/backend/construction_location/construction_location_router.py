@@ -1,6 +1,7 @@
 import logging
+from typing import Type
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
@@ -30,4 +31,13 @@ def persist_construction_location(request_data: CreateConstructionLocationReques
 
     return db_construction_location
 
-# TODO: Add endpoint for fetching all entries (called by the arcgis project
+
+@router.get("", response_model=list[ConstructionLocationResponseDTO], status_code=200)
+def fetch_constructions_locations(page: int = Query(0, ge=0), size: int = Query(500, ge=1, le=1_000), db: Session = Depends(get_db)):
+    constructions_locations: list[Type[ConstructionLocation]] = (
+        db.query(ConstructionLocation)
+        .offset(page * size)
+        .limit(size)
+        .all()
+    )
+    return constructions_locations
