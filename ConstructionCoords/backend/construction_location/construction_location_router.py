@@ -4,9 +4,9 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
-from construction_location.dtos.request.create_construction_location_request_dto import CreateConstructionLocationRequestDTO
-from construction_location.dtos.response.construction_location_response_dto import ConstructionLocationResponseDTO
-from construction_location.entities.construction_location import ConstructionLocation
+from .dtos.request.create_construction_location_request_dto import CreateConstructionLocationRequestDTO
+from .dtos.response.construction_location_response_dto import ConstructionLocationResponseDTO
+from .entities.construction_location import ConstructionLocation
 from database import get_db
 
 
