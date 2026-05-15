@@ -1,16 +1,17 @@
 import logging
 
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ValidationError
 from sqlalchemy.exc import IntegrityError
 from starlette.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
-from construction_location.construction_location_router import router as construction_location_router
-from database import Base, engine
 
+from database import Base, engine, get_db
+from plugin_api import PluginContext
+from plugins import construction_location
 
-# Creates DB tables for all imported models that extend Base (must run after model imports)
-Base.metadata.create_all(engine)
+PLUGINS = [construction_location]
+
 
 logger: logging.Logger = logging.getLogger("app")
 logging.basicConfig(
@@ -28,7 +29,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(construction_location_router)
+ctx = PluginContext(base_class=Base, get_db=get_db)
+for plugin in PLUGINS:
+    plugin.register(app, ctx)
+
+# Creates DB tables for all imported models that extend Base (must run after model imports)
+Base.metadata.create_all(engine)
 
 
 @app.exception_handler(ValidationError)
