@@ -9,5 +9,7 @@ class ConstructionLocationResponseDTO(BaseModel):
     created_at: datetime
     latitude: float
     longitude: float
+    name: str
+    name_confidence: float
 
     model_config = ConfigDict(from_attributes=True)

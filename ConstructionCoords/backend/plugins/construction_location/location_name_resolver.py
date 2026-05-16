@@ -40,12 +40,12 @@ class LocationNameResolver:
         if open_ai_response is not None:
             try:
                 parsed_open_ai_response: dict[str, Any] = json.loads(open_ai_response)
-                print(f"--| OpenAI response: \n{json.dumps(parsed_open_ai_response, indent=2)}")  # TODO: For debug only
+                print(f"--| OpenAI response for [lat={construction_location.latitude}, lon={construction_location.longitude}]:\n'''\n{json.dumps(parsed_open_ai_response, indent=2)}\n'''")
 
                 construction_location.name = parsed_open_ai_response.get("name") or "N/A"
                 construction_location.name_confidence = parsed_open_ai_response.get("name_confidence") or 0.0
             except JSONDecodeError:
-                print(f"OpenAI invalid response format. Couldn't parse the JSON!\n'''\n{open_ai_response}\n'''")  # TODO: For debug only
+                print(f"OpenAI invalid response format. Couldn't parse the JSON!\n'''\n{open_ai_response}\n'''")
 
     @staticmethod
     def construct_prompt(latitude: float, longitude: float) -> str:
@@ -64,7 +64,7 @@ class LocationNameResolver:
         last_close_brace_inx = llm_response.rfind('}')
 
         if first_open_brace_inx == -1 or last_close_brace_inx == -1:
-            print(f"OpenAI invalid response format. Cannot find opening and closing braces!\n'''\n{llm_response}\n'''")  # TODO: For debug only
+            print(f"OpenAI invalid response format. Cannot find opening and closing braces!\n'''\n{llm_response}\n'''")
             return None
 
         if first_open_brace_inx < last_close_brace_inx:
