@@ -7,7 +7,7 @@ interface CoordinateFormProps {
     autoFocus?: boolean;
 }
 
-const COORDINATE_FORMAT_PATTERN = /^\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)$/;
+const COORDINATE_FORMAT_PATTERN = /^\(?\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)?$/;
 
 type ParseResult =
     | { ok: true; lat: number; lon: number }
@@ -32,7 +32,7 @@ function parseCoordinates(input: string): ParseResult {
     if (!match) {
         return {
             ok: false,
-            error: "Invalid input. Use format (latitude, longitude).",
+            error: "Invalid input. Use format latitude, longitude (parentheses optional).",
         };
     }
 
@@ -42,7 +42,7 @@ function parseCoordinates(input: string): ParseResult {
     if (isNaN(lat) || isNaN(lon)) {
         return {
             ok: false,
-            error: "Invalid input. Use format (latitude, longitude).",
+            error: "Invalid input. Use format latitude, longitude (parentheses optional).",
         };
     }
 

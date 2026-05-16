@@ -31,7 +31,7 @@ def build_router(get_db, ConstructionLocation, location_name_resolver: LocationN
 
         return db_construction_location
 
-    @router.get("", response_model=list[ConstructionLocationResponseDTO], status_code=200)  # TODO: Create new entity GeoJSON and return it here
+    @router.get("", response_model=list[ConstructionLocationResponseDTO], status_code=200)
     def fetch_constructions_locations(page: int = Query(0, ge=0), size: int = Query(500, ge=1, le=1_000), db: Session = Depends(get_db)):
         constructions_locations = (
             db.query(ConstructionLocation)
@@ -42,3 +42,8 @@ def build_router(get_db, ConstructionLocation, location_name_resolver: LocationN
         return constructions_locations
 
     return router
+
+    # TODO: Implement
+    # @router.get("/geo-json", response_model=None, status_code=200)
+    # def fetch_construction_locations_as_geo_json():
+    #     pass
