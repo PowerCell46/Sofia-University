@@ -35,16 +35,16 @@
     </confidence_rules>
     <case_example>
         input:
-        """
-            { "longitude": 23.3119265, "latitude": 42.6791504 }
-        """
+            example 1: """ { "longitude": 23.3119265, "latitude": 42.6791504 } """
+            example 2: """ { "longitude": 23.3422, "latitude": 42.6851 } """
+            example 3: """ { "longitude": 23.3423, "latitude": 42.6973 } """
         output:
-        """
-            { "id": "51259417-3a6d-4a8e-b7f3-f6526377e4bc", "name": "Around NDK, Sofia", "name_confidence": 0.82 }
-        """
+            example 1: """ { "name": "Around NDK, Sofia", "name_confidence": 0.82 } """
+            example 2: """ { "name": "Borisova garden", "name_confidence": 0.92 } """
+            example 3: """ { "name": "Zaimov park", "name_confidence": 0.84 } """
     </case_example>
     <expected_output_format>
-        Return ONLY a JSON object with exactly these fields: "id", "name", "name_confidence".
+        Return ONLY a JSON object with exactly these fields: "name", "name_confidence".
         DO NOT include: free text, Markdown code fences, questions, confirmations, comments, or
         trailing commas. The output will be parsed directly. This is the MOST IMPORTANT PART.
     </expected_output_format>
