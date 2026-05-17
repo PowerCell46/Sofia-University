@@ -23,10 +23,15 @@ services:
     container_name: construction_coords_backend
     ports:
       - "8000:8000"
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     environment:
       POSTGRES_USER: ${POSTGRES_SQL_USERNAME}
       POSTGRES_PASSWORD: ${POSTGRES_SQL_PASSWORD}
       POSTGRES_ENDPOINT: db_postgres
+      OPEN_AI_API_KEY: ${OPEN_AI_API_KEY}
+      OPEN_AI_LLM_MODEL: ${OPEN_AI_LLM_MODEL}
     healthcheck:
       test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/docs')\""]
       interval: 10s
