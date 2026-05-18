@@ -1,0 +1,20 @@
+/* ! Common ! */
+@import url("./base/variables.css");
+
+@import url("./base/reset.css");
+
+@import url("./base/common.css");
+
+/* ! ArcGis map ! */
+@import url("./arcGisMapStyle.css");
+
+/* ! Control panel sections ! */
+@import url("./sections/baseSection.css");
+
+@import url("./sections/zoomSectionStyle.css");
+
+@import url("./sections/goToSectionStyle.css");
+
+@import url("./sections/changeBasemapSectionStyle.css");
+
+@import url("./sections/searchByCitySectionStyle.css");

@@ -1,0 +1,9 @@
+arcgis-map {
+    display: block;
+    width: 80%;
+    height: 100vh;
+}
+
+arcgis-zoom {
+    display: none;
+}

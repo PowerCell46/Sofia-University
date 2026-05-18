@@ -1,0 +1,15 @@
+#search-city-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2vh;
+}
+
+#search-city-form input {
+    color: var(--white-color);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--white-color);
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 0.85rem;
+    padding: 0.5rem;
+}

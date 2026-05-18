@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hands on experience with JS</title>
+    <link rel="icon" type="image/x-icon" href="./resources/gis_ico.png" />
+    <link rel="stylesheet" href="https://js.arcgis.com/5.0/esri/themes/light/main.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script type="module" src="https://js.arcgis.com/5.0/"></script>
+    <script type="module" src="./scripts/main.js" defer></script>
+</head>
+
+<body>
+    <div id="control-panel">
+        <h1 id="header-status">Hello there, GIS explorer!</h1>
+
+        <div id="zoom-container-wrapper">
+            <button class="zoom-btn">Zoom out</button>
+            <button class="zoom-btn">Zoom in</button>
+        </div>
+
+        <div id="go-to-container-wrapper">
+            <button class="go-to-bttn" to="sofia" >Go to Sofia</button>
+            <button class="go-to-bttn" to="plovdiv" >Go to Plovdiv</button>
+            <button class="go-to-bttn" to="varna" >Go to Varna</button>
+            <button class="go-to-bttn" to="burgas" >Go to Burgas</button>
+            <button class="go-to-bttn" to="ruse" >Go to Ruse</button>
+            <button class="go-to-bttn" to="default" >Reset view</button>
+        </div>
+
+        <div id="change-basemap-container-wrapper">
+            <p>Change basemap</p>
+
+            <select id="select-basemap">
+                <option value="osm">Open street map</option>
+                <option value="topo">Topographic</option>
+            </select>
+        </div>
+
+        <form id="search-city-form" method="post">
+            <p>Seach city</p>
+
+            <input name="city" type="text" placeholder="Craiova">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <arcgis-map basemap="osm" center="26.159806082947494,42.841653763545565" zoom="8">
+        <arcgis-zoom position="top-left"></arcgis-zoom>
+    </arcgis-map>
+
+</body>
+
+</html>
