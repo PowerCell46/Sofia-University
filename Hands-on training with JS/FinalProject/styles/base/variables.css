@@ -1,0 +1,10 @@
+:root {
+    --border-radius: 0.35rem;
+    --white-color: whitesmoke;
+
+    --section-padding: 3vh 1.5vw;
+    --section-margin: 0 1vw;
+
+    --button-padding: 0.75rem;
+    --button-font-size: 0.65rem;
+}
