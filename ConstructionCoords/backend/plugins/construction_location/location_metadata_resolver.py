@@ -16,19 +16,15 @@ class LocationMetadataResolver:
         self._geolocator: Nominatim = Nominatim(user_agent="construction-coords")
 
     def annotate_location(self, construction_location) -> None:
-        open_street_map_reverse_geocode = ""
-        try:
-            open_street_map_reverse_geocode = self._reverse_geocode(construction_location.latitude, construction_location.longitude)
-            print(f"--| OpenStreetMap reverse geocode: \n'''\n{open_street_map_reverse_geocode}\n'''")
-        except (GeocoderTimedOut, GeocoderServiceError) as e:
-            print(f"---| Nominatim reverse geocode failed: {e}")
+        reverse_geocode_response: str | None = self._reverse_geocode(construction_location)
+        print(f"--| OpenStreetMap response for [lat={construction_location.latitude}, lon={construction_location.longitude}]: \n'''\n{reverse_geocode_response}\n'''")
 
-        prompt = self.construct_prompt(construction_location.latitude, construction_location.longitude, open_street_map_reverse_geocode)
+        prompt = self.construct_prompt(construction_location.latitude, construction_location.longitude, reverse_geocode_response)
 
         request: list[dict[str, str]] = [
             {
                 "role": "system",
-                "content": (
+                "content": (  # TODO: If reverse_geocode is present, mention that you will also pass it to the prompt
                     "You are a strict geospatial annotator for JSON objects. Based solely on the coordinates "
                     "provided, you assign concise English location names, calibrated confidence scores, "
                     "feature types, visibility levels, and brief contextual descriptions. You avoid any "
@@ -62,19 +58,24 @@ class LocationMetadataResolver:
             except JSONDecodeError:
                 print(f"OpenAI invalid response format. Couldn't parse the JSON!\n'''\n{open_ai_response}\n'''")
 
-    def _reverse_geocode(self, lat: float, lon: float) -> dict | None:
-        location = self._geolocator.reverse((lat, lon), language="en", timeout=5)
-        return location.raw.get("address") if location else None
+    def _reverse_geocode(self, construction_location) -> str | None:
+        try:
+            location = self._geolocator.reverse((construction_location.latitude, construction_location.longitude), language="en", timeout=5)
+            return location.raw.get("address") if location else None
+
+        except (GeocoderTimedOut, GeocoderServiceError) as e:
+            print(f"---| Nominatim reverse geocode failed: {e}")
+            return None
 
     @staticmethod
-    def construct_prompt(latitude: float, longitude: float, reverse_geocode: str) -> str:
+    def construct_prompt(latitude: float, longitude: float, reverse_geocode: str | None) -> str:
         BASE_DIR = Path(__file__).resolve().parent
         PROMPT_TEMPLATE_FILE_PATH = BASE_DIR / "resources" / "prompt_template.xml"
 
         template: str = PROMPT_TEMPLATE_FILE_PATH.read_text(encoding="utf-8")
         content: str = f'{{"longitude": {longitude}, "latitude": {latitude}}}'
 
-        if reverse_geocode != "":
+        if reverse_geocode is not None:
             template = template.replace("{{verse_geocode_context}}", f"""<reverse_geocode_context>
         The following structured address data was retrieved from OpenStreetMap from these coordinates.
         Treat as ground truth:
