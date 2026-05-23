@@ -120,11 +120,11 @@ function CoordinateForm({ onSubmit, autoFocus }: CoordinateFormProps) {
         <div className="coordinate-form">
             <div className="form-logo load-slide-down">
                 <span className="logo-bracket">[</span>
-                <span className="logo-text">CC</span>
+                <span className="logo-text">GeoAI</span>
                 <span className="logo-bracket">]</span>
             </div>
             <p className="form-subtitle load-slide-down-delay">
-                Construction Coordinate Logger
+                Geospatial Coordinate Logger
             </p>
 
             <div className="load-slide-up">

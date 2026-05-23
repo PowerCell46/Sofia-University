@@ -10,7 +10,7 @@
     height: 36px;
     border: 2px solid var(--border-color);
     border-radius: 6px;
-    background: var(--bg-surface);
+    background: var(--toggle-bg);
     color: var(--accent);
     cursor: pointer;
     transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
