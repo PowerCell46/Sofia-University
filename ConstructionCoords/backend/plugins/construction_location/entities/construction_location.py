@@ -13,6 +13,9 @@ def build_entity(Base: DeclarativeMeta) -> type:
         longitude = Column(Double, nullable=False)
         name = Column(String, nullable=False, default="N/A")
         name_confidence = Column(Double, nullable=False, default=0.0)
+        type = Column(String, nullable=False)
+        visibility_level = Column(String, nullable=False)
+        description = Column(String, nullable=False)
         # user_identifier (MAC address/optional name field)
 
     return ConstructionLocation

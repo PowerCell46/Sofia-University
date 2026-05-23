@@ -11,17 +11,18 @@ class LocationNameResolver:
     def __init__(self):
         self._client: OpenAI = OpenAI(api_key=os.getenv("OPEN_AI_API_KEY"))
 
-    def assign_name_to_point(self, construction_location) -> None:
+    def annotate_location(self, construction_location) -> None:
         prompt = self.construct_prompt(construction_location.latitude, construction_location.longitude)
 
         request: list[dict[str, str]] = [
             {
                 "role": "system",
                 "content": (
-                    "You are a strict geospatial annotator for a JSON object. Based solely on "
-                    "the coordinates provided, you assign concise English location names and calibrated "
-                    "confidence scores, avoiding any guess that exceeds your actual certainty, and return "
-                    "a validated JSON object that conforms exactly to the schema specified by the user."
+                    "You are a strict geospatial annotator for JSON objects. Based solely on the coordinates "
+                    "provided, you assign concise English location names, calibrated confidence scores, "
+                    "feature types, visibility levels, and brief contextual descriptions. You avoid any "
+                    "inference that exceeds your actual certainty, and you return a validated JSON object "
+                    "that conforms exactly to the schema specified by the user."
                 ),
             },
             {
@@ -44,6 +45,9 @@ class LocationNameResolver:
 
                 construction_location.name = parsed_open_ai_response.get("name") or "N/A"
                 construction_location.name_confidence = parsed_open_ai_response.get("name_confidence") or 0.0
+                construction_location.type = parsed_open_ai_response.get("type") or "N/A"
+                construction_location.visibility_level = parsed_open_ai_response.get("visibility_level") or "N/A"
+                construction_location.description = parsed_open_ai_response.get("description") or "N/A"
             except JSONDecodeError:
                 print(f"OpenAI invalid response format. Couldn't parse the JSON!\n'''\n{open_ai_response}\n'''")
 

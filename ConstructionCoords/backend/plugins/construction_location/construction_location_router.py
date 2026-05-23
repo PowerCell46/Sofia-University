@@ -21,7 +21,7 @@ def build_router(get_db, ConstructionLocation, location_name_resolver: LocationN
         logger.info("Creating construction location: lat=%s, lng=%s", request_data.latitude, request_data.longitude)
 
         db_construction_location = ConstructionLocation(**request_data.model_dump())
-        location_name_resolver.assign_name_to_point(db_construction_location)
+        location_name_resolver.annotate_location(db_construction_location)
 
         try:
             db.add(db_construction_location)
