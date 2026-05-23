@@ -1,0 +1,52 @@
+#control-panel {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    border-radius: 0 0.5rem 0.5rem 0;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.625), rgba(0, 0, 0, 0.625)), url("../../resources/gis_control_panel_background.png");
+}
+
+#header-status {
+    margin-top: 5vh;
+    color: var(--white-color);
+    margin-left: 1.5vw;
+    font-size: 1.4rem;
+}
+
+#zoom-container-wrapper,
+#go-to-container-wrapper,
+#change-basemap-container-wrapper,
+#search-city-form {
+    margin: var(--section-margin);
+    border-radius: var(--border-radius);
+    padding: var(--section-padding);
+    border: 1px dashed var(--white-color);
+}
+
+button {
+    padding: var(--button-padding);
+    font-size: var(--button-font-size);
+    cursor: pointer;
+    color: var(--white-color);
+    border: 1px solid var(--white-color);
+    border-radius: var(--border-radius);
+    background-color: transparent;
+    transition: 400ms ease-in-out;
+}
+
+button:hover {
+    background-color: rgba(245, 245, 245, 0.2);
+    transform: translateY(-0.25rem);
+}
+
+p {
+    margin: 0;
+    color: var(--white-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
