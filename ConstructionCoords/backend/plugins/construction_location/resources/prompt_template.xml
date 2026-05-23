@@ -78,6 +78,7 @@
         DO NOT include: free text, Markdown code fences, questions, confirmations, comments,
         or trailing commas. The output will be parsed directly. THIS IS THE MOST IMPORTANT RULE.
     </expected_output_format>
+    {{verse_geocode_context}}
     <data_for_processing>
         {{content}}
     </data_for_processing>

@@ -8,12 +8,12 @@ from sqlalchemy.orm import Session
 from .dtos.request.create_construction_location_request_dto import CreateConstructionLocationRequestDTO
 from .dtos.response.construction_location_geojson_response_dto import ConstructionLocationGeoJSONResponseDTO
 from .dtos.response.construction_location_response_dto import ConstructionLocationResponseDTO
-from .location_name_resolver import LocationNameResolver
+from .location_metadata_resolver import LocationMetadataResolver
 
 logger: logging.Logger = logging.getLogger("app.routes.construction_location")
 
 
-def build_router(get_db, ConstructionLocation, location_name_resolver: LocationNameResolver) -> APIRouter:
+def build_router(get_db, ConstructionLocation, location_metadata_resolver: LocationMetadataResolver) -> APIRouter:
     router: APIRouter = APIRouter(prefix="/api/construction-location")
 
     @router.post("", response_model=ConstructionLocationResponseDTO, status_code=201)
@@ -21,7 +21,7 @@ def build_router(get_db, ConstructionLocation, location_name_resolver: LocationN
         logger.info("Creating construction location: lat=%s, lng=%s", request_data.latitude, request_data.longitude)
 
         db_construction_location = ConstructionLocation(**request_data.model_dump())
-        location_name_resolver.annotate_location(db_construction_location)
+        location_metadata_resolver.annotate_location(db_construction_location)
 
         try:
             db.add(db_construction_location)
