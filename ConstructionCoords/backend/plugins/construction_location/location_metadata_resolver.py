@@ -24,21 +24,7 @@ class LocationMetadataResolver:
         request: list[dict[str, str]] = [
             {
                 "role": "system",
-                "content": (
-                    "You are a strict geospatial annotator for JSON objects. Based solely on the coordinates "
-                    "provided, you assign concise English location names, calibrated confidence scores, "
-                    "feature types, visibility levels, and brief contextual descriptions. You avoid any "
-                    "inference that exceeds your actual certainty, and you return a validated JSON object "
-                    "that conforms exactly to the schema specified by the user."
-                ) if (reverse_geocode_response is None or reverse_geocode_response == "") else (
-                    "You are a strict geospatial annotator for JSON objects. You are provided with coordinates "
-                    "and an authoritative reverse-geocoded address from OpenStreetMap, which you must treat as "
-                    "ground truth and prioritize over any prior knowledge. Using this context, you assign "
-                    "concise English location names, calibrated confidence scores, feature types, visibility "
-                    "levels, and brief contextual descriptions. You avoid any inference that exceeds what the "
-                    "provided address and coordinates support, and you return a validated JSON object that "
-                    "conforms exactly to the schema specified by the user."
-                ),
+                "content": self.construct_system_instructions(reverse_geocode_response),
             },
             {
                 "role": "user",
@@ -68,9 +54,12 @@ class LocationMetadataResolver:
 
     def _reverse_geocode(self, construction_location) -> str | None:
         try:
-            location = self._geolocator.reverse((construction_location.latitude, construction_location.longitude), language="en", timeout=5)
+            location = self._geolocator.reverse(
+                (construction_location.latitude, construction_location.longitude),
+                language="en",
+                timeout=5
+            )
             return location.raw.get("address") if location else None
-
         except (GeocoderTimedOut, GeocoderServiceError) as e:
             print(f"Nominatim reverse geocode failed: {e}")
             return None
@@ -78,22 +67,43 @@ class LocationMetadataResolver:
     @staticmethod
     def construct_prompt(latitude: float, longitude: float, reverse_geocode: str | None) -> str:
         BASE_DIR = Path(__file__).resolve().parent
-        PROMPT_TEMPLATE_FILE_PATH = BASE_DIR / "resources" / "prompt_template.xml"
-        PROMPT_TEMPLATE_WITH_REVERSE_GEOCODE_FILE_PATH = BASE_DIR / "resources" / "prompt_template_with_reverse_geocode.xml"
+        PROMPT_WITHOUT_GEOCODE_FILE_PATH = BASE_DIR / "resources" / "prompt_without_geocode.xml"
+        PROMPT_WITH_GEOCODE_FILE_PATH = BASE_DIR / "resources" / "prompt_with_geocode.xml"
 
         content: str = f'{{"longitude": {longitude}, "latitude": {latitude}}}'
 
         if reverse_geocode is not None and reverse_geocode != "":
-            template: str = PROMPT_TEMPLATE_WITH_REVERSE_GEOCODE_FILE_PATH.read_text(encoding="utf-8")
+            template: str = PROMPT_WITH_GEOCODE_FILE_PATH.read_text(encoding="utf-8")
             template = template.replace("{{reverse_geocode_context}}", f"""<reverse_geocode_context>
         The following structured address data was retrieved from OpenStreetMap from these coordinates.
         Treat as ground truth:
         {reverse_geocode}
     </reverse_geocode_context>""")
         else:
-            template: str = PROMPT_TEMPLATE_FILE_PATH.read_text(encoding="utf-8")
+            template: str = PROMPT_WITHOUT_GEOCODE_FILE_PATH.read_text(encoding="utf-8")
 
         return template.replace("{{content}}", content)
+
+    @staticmethod
+    def construct_system_instructions(reverse_geocode_response: str | None) -> str:
+        if reverse_geocode_response is None or reverse_geocode_response == "":
+            return (
+                    "You are a strict geospatial annotator for JSON objects. Based solely on the coordinates "
+                    "provided, you assign concise English location names, calibrated confidence scores, "
+                    "feature types, visibility levels, and brief contextual descriptions. You avoid any "
+                    "inference that exceeds your actual certainty, and you return a validated JSON object "
+                    "that conforms exactly to the schema specified by the user."
+                )
+        else:
+            return (
+                    "You are a strict geospatial annotator for JSON objects. You are provided with coordinates "
+                    "and an authoritative reverse-geocoded address from OpenStreetMap, which you must treat as "
+                    "ground truth and prioritize over any prior knowledge. Using this context, you assign "
+                    "concise English location names, calibrated confidence scores, feature types, visibility "
+                    "levels, and brief contextual descriptions. You avoid any inference that exceeds what the "
+                    "provided address and coordinates support, and you return a validated JSON object that "
+                    "conforms exactly to the schema specified by the user."
+                )
 
     @staticmethod
     def strip_llm_response_result(llm_response: str) -> str | None:
