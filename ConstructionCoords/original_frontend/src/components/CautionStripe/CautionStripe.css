@@ -1,0 +1,52 @@
+.caution-stripe {
+    position: fixed;
+    top: 0;
+    left: -28px;
+    right: 0;
+    height: 4px;
+    z-index: 100;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--accent) 0,
+        var(--accent) 20px,
+        var(--bg-primary) 20px,
+        var(--bg-primary) 28px
+    );
+    animation: cautionScroll 1.5s linear infinite;
+    will-change: transform;
+    transition: none;
+}
+
+@keyframes cautionScroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(28px);
+    }
+}
+
+/* Scale-up for large displays */
+@media (min-width: 1920px) {
+    .caution-stripe {
+        height: 5px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .caution-stripe {
+        height: 6px;
+    }
+}
+
+@media (min-width: 3440px) {
+    .caution-stripe {
+        height: 8px;
+    }
+}
+
+@media (min-width: 3840px) {
+    .caution-stripe {
+        height: 10px;
+    }
+}
