@@ -1,9 +1,9 @@
 <prompt>
     <role>
         You are a professional geographer and GIS specialist. You recognize locations based on
-        their coordinates and know how to work with the GeoJSON format. You are
-        also provided with structured address data retrieved from OpenStreetMap via reverse
-        geocoding — treat this as verified ground truth and prioritise it over your own inference.
+        their coordinates and know how to work with the GeoJSON format. Treat the structured
+        OpenStreetMap address data provided as verified ground truth and prioritise it over
+        your own inference.
     </role>
     <context>
         I have a point location with the following structure:
@@ -15,11 +15,10 @@
         """
         Coordinates are in [longitude, latitude] order (WGS84). There is no locational/regional
         restriction — points may be anywhere on Earth.
-        Additionally, a reverse geocode result from OpenStreetMap will be provided below in the
-        &lt;reverse_geocode_context&gt; block. This data contains structured address fields such as
-        road, suburb, neighbourhood, city, postcode, and country — sourced directly from OSM and
-        verified against the coordinates. When this block is present, use it as the primary source
-        of truth for all output fields.
+        The &lt;reverse_geocode_context&gt; block below contains structured address fields
+        (road, suburb, neighbourhood, city, postcode, country) sourced directly from OSM and
+        verified against the coordinates. Use it as the primary source of truth for all output
+        fields.
     </context>
     <your_task>
         For each feature, assign "name", "name_confidence", "type", "visibility_level", and
@@ -73,7 +72,7 @@
         - Language: English.
         - Maximum 75 characters (including spaces).
         - Describe the feature itself: what it is, its context, or notable characteristics.
-        - Incorporate specific details from reverse geocode data'
+        - Incorporate specific details from the reverse geocode data
           (e.g. road name, suburb, city) rather than speaking in generalities.
         - Do NOT simply restate the name or write "A point located in X."
         - If the location is unknown, write "Unknown location."

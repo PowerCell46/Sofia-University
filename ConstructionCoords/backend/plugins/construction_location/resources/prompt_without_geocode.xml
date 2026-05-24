@@ -32,7 +32,8 @@
         - 0.4 - 0.7: only city or town level is identifiable
         - 0.1 - 0.4: only region or country is identifiable
         - 0.0:       name is "N/A" (unknown)
-        USE "N/A" ONLY IF "name_confidence" IS 0.0.
+        Without verified address data, lean toward the lower end of the applicable band —
+        coordinate-only inference is noisy. USE "N/A" ONLY IF "name_confidence" IS 0.0.
     </confidence_rules>
     <type_rules>
         - Language: English.
@@ -40,7 +41,7 @@
         - Choose the single best-fitting value from this list:
             "building", "park", "road feature", "utility", "landmark",
             "incident", "service point", "natural feature", "residential area",
-            "commercial area", "transport hub", "other"
+            "commercial area", "transport hub", "other".
         - Use "other" if none of the above fits.
         - If you cannot identify the location at all, use "N/A".
     </type_rules>

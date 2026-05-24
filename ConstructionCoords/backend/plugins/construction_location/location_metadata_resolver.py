@@ -81,12 +81,11 @@ class LocationMetadataResolver:
     def construct_prompt(self, latitude: float, longitude: float, reverse_geocode: str | None) -> str:
         content: str = f'{{"longitude": {longitude}, "latitude": {latitude}}}'
 
-        if reverse_geocode is not None and reverse_geocode != "":
-            aligned_geocode = reverse_geocode.replace("\n", "\n        ")
+        if reverse_geocode:
             template = self._prompt_with_geocode.replace("{{reverse_geocode_context}}", f"""<reverse_geocode_context>
         The following structured address data was retrieved from OpenStreetMap from these coordinates.
         Treat as ground truth:
-        {aligned_geocode}
+        {reverse_geocode.replace("\n", "\n        ")}
     </reverse_geocode_context>""")
         else:
             template = self._prompt_without_geocode
@@ -95,24 +94,24 @@ class LocationMetadataResolver:
 
     @staticmethod
     def construct_system_instructions(reverse_geocode_response: str | None) -> str:
-        if reverse_geocode_response is None or reverse_geocode_response == "":
-            return (
-                    "You are a strict geospatial annotator for JSON objects. Based solely on the coordinates "
-                    "provided, you assign concise English location names, calibrated confidence scores, "
-                    "feature types, visibility levels, and brief contextual descriptions. You avoid any "
-                    "inference that exceeds your actual certainty, and you return a validated JSON object "
-                    "that conforms exactly to the schema specified by the user."
+        base = (
+                "You are a strict geospatial annotator for JSON objects. You assign concise English "
+                "location names, calibrated confidence scores, feature types, visibility levels, and "
+                "brief contextual descriptions, and return a validated JSON object that conforms "
+                "exactly to the schema specified by the user."
+            )
+        if reverse_geocode_response:
+            addendum = (
+                    " You are provided with an authoritative reverse-geocoded address from OpenStreetMap, "
+                    "which you must treat as ground truth and prioritize over any prior knowledge. "
+                    "Avoid any inference that exceeds what the provided address and coordinates support."
                 )
         else:
-            return (
-                    "You are a strict geospatial annotator for JSON objects. You are provided with coordinates "
-                    "and an authoritative reverse-geocoded address from OpenStreetMap, which you must treat as "
-                    "ground truth and prioritize over any prior knowledge. Using this context, you assign "
-                    "concise English location names, calibrated confidence scores, feature types, visibility "
-                    "levels, and brief contextual descriptions. You avoid any inference that exceeds what the "
-                    "provided address and coordinates support, and you return a validated JSON object that "
-                    "conforms exactly to the schema specified by the user."
+            addendum = (
+                    " Based solely on the coordinates provided, avoid any inference that exceeds "
+                    "your actual certainty."
                 )
+        return base + addendum
 
     @staticmethod
     def strip_llm_response_result(llm_response: str) -> str | None:
