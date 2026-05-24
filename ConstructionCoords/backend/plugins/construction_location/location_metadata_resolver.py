@@ -12,19 +12,22 @@ from openai import OpenAI
 class LocationMetadataResolver:
     def __init__(self):
         self._client: OpenAI = OpenAI(api_key=os.getenv("OPEN_AI_API_KEY"))
-        # Nominatim is the geocoding engine built on top of OpenStreetMap data.
-        self._geolocator: Nominatim = Nominatim(user_agent="construction-coords")
+        self._geolocator: Nominatim = Nominatim(user_agent="construction-coords")  # Nominatim is the geocoding engine built on top of OpenStreetMap data.
+        resources_dir = Path(__file__).resolve().parent / "resources"
+        self._prompt_without_geocode: str = (resources_dir / "prompt_without_geocode.xml").read_text(encoding="utf-8")
+        self._prompt_with_geocode: str = (resources_dir / "prompt_with_geocode.xml").read_text(encoding="utf-8")
 
     def annotate_location(self, construction_location) -> None:
-        reverse_geocode_response: str | None = self._reverse_geocode(construction_location)
+        reverse_geocode_response: str | None = self.reverse_geocode(construction_location)
         print(f"--| OpenStreetMap response for [lat={construction_location.latitude}, lon={construction_location.longitude}]: \n'''\n{reverse_geocode_response}\n'''")
 
-        prompt = self.construct_prompt(construction_location.latitude, construction_location.longitude, reverse_geocode_response)
+        prompt: str = self.construct_prompt(construction_location.latitude, construction_location.longitude, reverse_geocode_response)
+        system_instructions: str = self.construct_system_instructions(reverse_geocode_response)
 
         request: list[dict[str, str]] = [
             {
                 "role": "system",
-                "content": self.construct_system_instructions(reverse_geocode_response),
+                "content": system_instructions,
             },
             {
                 "role": "user",
@@ -38,11 +41,10 @@ class LocationMetadataResolver:
         )
 
         open_ai_response = self.strip_llm_response_result(response.choices[0].message.content)
-
         if open_ai_response is not None:
             try:
                 parsed_open_ai_response: dict[str, Any] = json.loads(open_ai_response)
-                print(f"--| OpenAI response for [lat={construction_location.latitude}, lon={construction_location.longitude}]:\n'''\n{json.dumps(parsed_open_ai_response, indent=2)}\n'''")
+                print(f"--| OpenAI response for [lat={construction_location.latitude}, lon={construction_location.longitude}]:\n'''\n{json.dumps(parsed_open_ai_response, indent=2, ensure_ascii=False)}\n'''")
 
                 construction_location.name = parsed_open_ai_response.get("name") or "N/A"
                 construction_location.name_confidence = parsed_open_ai_response.get("name_confidence") or 0.0
@@ -52,35 +54,42 @@ class LocationMetadataResolver:
             except JSONDecodeError:
                 print(f"OpenAI invalid response format. Couldn't parse the JSON!\n'''\n{open_ai_response}\n'''")
 
-    def _reverse_geocode(self, construction_location) -> str | None:
+    def reverse_geocode(self, construction_location) -> str | None:
         try:
             location = self._geolocator.reverse(
                 (construction_location.latitude, construction_location.longitude),
                 language="en",
                 timeout=5
             )
-            return location.raw.get("address") if location else None
         except (GeocoderTimedOut, GeocoderServiceError) as e:
             print(f"Nominatim reverse geocode failed: {e}")
             return None
 
-    @staticmethod
-    def construct_prompt(latitude: float, longitude: float, reverse_geocode: str | None) -> str:
-        BASE_DIR = Path(__file__).resolve().parent
-        PROMPT_WITHOUT_GEOCODE_FILE_PATH = BASE_DIR / "resources" / "prompt_without_geocode.xml"
-        PROMPT_WITH_GEOCODE_FILE_PATH = BASE_DIR / "resources" / "prompt_with_geocode.xml"
+        if location is None:
+            return None
 
+        address: dict | None = location.raw.get("address")
+        if not address:
+            return None
+
+        try:
+            return json.dumps(address, indent=2, ensure_ascii=False)
+        except (TypeError, ValueError) as e:
+            print(f"Failed to serialize reverse geocode address {address!r}: {e}")
+            return None
+
+    def construct_prompt(self, latitude: float, longitude: float, reverse_geocode: str | None) -> str:
         content: str = f'{{"longitude": {longitude}, "latitude": {latitude}}}'
 
         if reverse_geocode is not None and reverse_geocode != "":
-            template: str = PROMPT_WITH_GEOCODE_FILE_PATH.read_text(encoding="utf-8")
-            template = template.replace("{{reverse_geocode_context}}", f"""<reverse_geocode_context>
+            aligned_geocode = reverse_geocode.replace("\n", "\n        ")
+            template = self._prompt_with_geocode.replace("{{reverse_geocode_context}}", f"""<reverse_geocode_context>
         The following structured address data was retrieved from OpenStreetMap from these coordinates.
         Treat as ground truth:
-        {reverse_geocode}
+        {aligned_geocode}
     </reverse_geocode_context>""")
         else:
-            template: str = PROMPT_WITHOUT_GEOCODE_FILE_PATH.read_text(encoding="utf-8")
+            template = self._prompt_without_geocode
 
         return template.replace("{{content}}", content)
 
