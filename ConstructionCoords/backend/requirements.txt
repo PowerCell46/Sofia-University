@@ -5,4 +5,4 @@ SQLAlchemy~=2.0.49
 psycopg2-binary~=2.9.9
 openai>=1.0
 geojson-pydantic~=2.1.1
-geopy>=23.2.1
+geopy>=2.4.1

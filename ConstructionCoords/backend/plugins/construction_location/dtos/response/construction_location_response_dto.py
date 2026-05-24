@@ -11,5 +11,8 @@ class ConstructionLocationResponseDTO(BaseModel):
     longitude: float
     name: str
     name_confidence: float
+    type: str
+    visibility_level: str
+    description: str
 
     model_config = ConfigDict(from_attributes=True)

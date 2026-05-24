@@ -66,6 +66,9 @@ def build_router(get_db, ConstructionLocation, location_metadata_resolver: Locat
                     "created_at": construction_location.created_at,
                     "name": construction_location.name,
                     "name_confidence": construction_location.name_confidence,
+                    "type": construction_location.type,
+                    "visibility_level": construction_location.visibility_level,
+                    "description": construction_location.description,
                     "marker-symbol": "building",
                 }
             }
