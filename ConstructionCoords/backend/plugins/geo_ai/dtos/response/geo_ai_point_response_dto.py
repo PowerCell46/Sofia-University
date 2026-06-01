@@ -1,0 +1,18 @@
+from datetime import datetime
+from uuid import UUID
+
+from pydantic import BaseModel, ConfigDict
+
+
+class GeoAiPointResponseDTO(BaseModel):
+    id: UUID
+    created_at: datetime
+    latitude: float
+    longitude: float
+    name: str
+    name_confidence: float
+    type: str
+    visibility_level: str
+    description: str
+
+    model_config = ConfigDict(from_attributes=True)

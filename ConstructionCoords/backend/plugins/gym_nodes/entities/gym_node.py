@@ -4,8 +4,8 @@ from sqlalchemy.orm import DeclarativeMeta
 
 
 def build_entity(Base: DeclarativeMeta) -> type:
-    class ConstructionLocation(Base):
-        __tablename__ = "constructions_locations"
+    class GymNode(Base):
+        __tablename__ = "gym_nodes"
 
         id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
         created_at = Column(DateTime(timezone=False), server_default=func.now(), nullable=False)
@@ -16,6 +16,6 @@ def build_entity(Base: DeclarativeMeta) -> type:
         type = Column(String, nullable=False)
         visibility_level = Column(String, nullable=False)  # public, internal, restricted
         description = Column(String, nullable=False)
-        # user_identifier (MAC address/optional name field)
+        # TODO: submitter_identifier (MAC address/optional name field)
 
-    return ConstructionLocation
+    return GymNode

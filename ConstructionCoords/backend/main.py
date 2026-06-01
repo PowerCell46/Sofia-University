@@ -8,9 +8,9 @@ from starlette.responses import JSONResponse
 
 from database import Base, engine, get_db
 from plugin_api import PluginContext
-from plugins import construction_location
+from plugins import construction_coords, geo_ai, gym_nodes
 
-PLUGINS = [construction_location]
+PLUGINS = [construction_coords, geo_ai, gym_nodes]
 
 
 logger: logging.Logger = logging.getLogger("app")

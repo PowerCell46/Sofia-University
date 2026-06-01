@@ -1,7 +1,7 @@
 from pydantic import BaseModel, field_validator
 
 
-class CreateConstructionLocationRequestDTO(BaseModel):
+class CreateGeoAiPointRequestDTO(BaseModel):
     latitude: float
     longitude: float
 

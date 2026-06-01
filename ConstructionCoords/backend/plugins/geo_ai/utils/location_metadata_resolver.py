@@ -12,16 +12,16 @@ from openai import OpenAI
 class LocationMetadataResolver:
     def __init__(self):
         self._client: OpenAI = OpenAI(api_key=os.getenv("OPEN_AI_API_KEY"))
-        self._geolocator: Nominatim = Nominatim(user_agent="construction-coords")  # Nominatim is the geocoding engine built on top of OpenStreetMap data.
-        resources_dir = Path(__file__).resolve().parent / "resources"
+        self._geolocator: Nominatim = Nominatim(user_agent="geo-ai")  # Nominatim is the geocoding engine built on top of OpenStreetMap data.
+        resources_dir = Path(__file__).resolve().parent.parent / "resources"
         self._prompt_without_geocode: str = (resources_dir / "prompt_without_geocode.xml").read_text(encoding="utf-8")
         self._prompt_with_geocode: str = (resources_dir / "prompt_with_geocode.xml").read_text(encoding="utf-8")
 
-    def annotate_location(self, construction_location) -> None:
-        reverse_geocode_response: str | None = self.reverse_geocode(construction_location)
-        print(f"--| OpenStreetMap response for [lat={construction_location.latitude}, lon={construction_location.longitude}]: \n'''\n{reverse_geocode_response}\n'''")
+    def annotate_location(self, geo_ai_point) -> None:
+        reverse_geocode_response: str | None = self.reverse_geocode(geo_ai_point)
+        print(f"--| OpenStreetMap response for [lat={geo_ai_point.latitude}, lon={geo_ai_point.longitude}]: \n'''\n{reverse_geocode_response}\n'''")
 
-        prompt: str = self.construct_prompt(construction_location.latitude, construction_location.longitude, reverse_geocode_response)
+        prompt: str = self.construct_prompt(geo_ai_point.latitude, geo_ai_point.longitude, reverse_geocode_response)
         system_instructions: str = self.construct_system_instructions(reverse_geocode_response)
 
         request: list[dict[str, str]] = [
@@ -44,20 +44,20 @@ class LocationMetadataResolver:
         if open_ai_response is not None:
             try:
                 parsed_open_ai_response: dict[str, Any] = json.loads(open_ai_response)
-                print(f"--| OpenAI response for [lat={construction_location.latitude}, lon={construction_location.longitude}]:\n'''\n{json.dumps(parsed_open_ai_response, indent=2, ensure_ascii=False)}\n'''")
+                print(f"--| OpenAI response for [lat={geo_ai_point.latitude}, lon={geo_ai_point.longitude}]:\n'''\n{json.dumps(parsed_open_ai_response, indent=2, ensure_ascii=False)}\n'''")
 
-                construction_location.name = parsed_open_ai_response.get("name") or "N/A"
-                construction_location.name_confidence = parsed_open_ai_response.get("name_confidence") or 0.0
-                construction_location.type = parsed_open_ai_response.get("type") or "N/A"
-                construction_location.visibility_level = parsed_open_ai_response.get("visibility_level") or "N/A"
-                construction_location.description = parsed_open_ai_response.get("description") or "N/A"
+                geo_ai_point.name = parsed_open_ai_response.get("name") or "N/A"
+                geo_ai_point.name_confidence = parsed_open_ai_response.get("name_confidence") or 0.0
+                geo_ai_point.type = parsed_open_ai_response.get("type") or "N/A"
+                geo_ai_point.visibility_level = parsed_open_ai_response.get("visibility_level") or "N/A"
+                geo_ai_point.description = parsed_open_ai_response.get("description") or "N/A"
             except JSONDecodeError:
                 print(f"OpenAI invalid response format. Couldn't parse the JSON!\n'''\n{open_ai_response}\n'''")
 
-    def reverse_geocode(self, construction_location) -> str | None:
+    def reverse_geocode(self, geo_ai_point) -> str | None:
         try:
             location = self._geolocator.reverse(
-                (construction_location.latitude, construction_location.longitude),
+                (geo_ai_point.latitude, geo_ai_point.longitude),
                 language="en",
                 timeout=5
             )

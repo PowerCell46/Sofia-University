@@ -4,7 +4,7 @@ from uuid import UUID
 from pydantic import BaseModel, Field
 
 
-class ConstructionLocationGeoJSONResponseDTO(BaseModel):
+class GymNodeGeoJSONResponseDTO(BaseModel):
     id: UUID
     created_at: datetime
     name: str
@@ -12,4 +12,4 @@ class ConstructionLocationGeoJSONResponseDTO(BaseModel):
     type: str
     visibility_level: str
     description: str
-    marker_symbol: str = Field("building", alias="marker-symbol")
+    marker_symbol: str = Field("building", alias="fitness-centre")
