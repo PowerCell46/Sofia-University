@@ -29,6 +29,14 @@ function HomePage() {
                     {VIEWS.map((view) => (
                         <ViewCard key={view.id} view={view} />
                     ))}
+
+                    <div className="view-card view-card--skeleton" aria-hidden="true">
+                        <div className="skeleton-lines">
+                            <span className="skeleton-line skeleton-line--title" />
+                            <span className="skeleton-line" />
+                            <span className="skeleton-line skeleton-line--short" />
+                        </div>
+                    </div>
                 </section>
             </main>
         </>

@@ -66,8 +66,6 @@ def build_router(get_db, GymNode, location_metadata_resolver: LocationMetadataRe
                     "created_at": gym_node.created_at,
                     "name": gym_node.name,
                     "name_confidence": gym_node.name_confidence,
-                    "type": gym_node.type,
-                    "visibility_level": gym_node.visibility_level,
                     "description": gym_node.description,
                     "marker-symbol": "building",
                 }

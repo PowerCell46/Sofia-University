@@ -95,22 +95,22 @@ class LocationMetadataResolver:
     @staticmethod
     def construct_system_instructions(reverse_geocode_response: str | None) -> str:
         base = (
-                "You are a strict geospatial annotator for JSON objects. You assign concise English "
-                "location names, calibrated confidence scores, feature types, visibility levels, and "
-                "brief contextual descriptions, and return a validated JSON object that conforms "
-                "exactly to the schema specified by the user."
-            )
+            "You are a strict geospatial annotator for JSON objects. You assign concise English "
+            "location names, calibrated confidence scores, feature types, visibility levels, and "
+            "brief contextual descriptions, and return a validated JSON object that conforms "
+            "exactly to the schema specified by the user."
+        )
         if reverse_geocode_response:
             addendum = (
-                    " You are provided with an authoritative reverse-geocoded address from OpenStreetMap, "
-                    "which you must treat as ground truth and prioritize over any prior knowledge. "
-                    "Avoid any inference that exceeds what the provided address and coordinates support."
-                )
+                " You are provided with an authoritative reverse-geocoded address from OpenStreetMap, "
+                "which you must treat as ground truth and prioritize over any prior knowledge. "
+                "Avoid any inference that exceeds what the provided address and coordinates support."
+            )
         else:
             addendum = (
-                    " Based solely on the coordinates provided, avoid any inference that exceeds "
-                    "your actual certainty."
-                )
+                " Based solely on the coordinates provided, avoid any inference that exceeds "
+                "your actual certainty."
+            )
         return base + addendum
 
     @staticmethod

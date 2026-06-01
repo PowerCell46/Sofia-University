@@ -9,7 +9,5 @@ class GymNodeGeoJSONResponseDTO(BaseModel):
     created_at: datetime
     name: str
     name_confidence: float
-    type: str
-    visibility_level: str
     description: str
     marker_symbol: str = Field("building", alias="fitness-centre")

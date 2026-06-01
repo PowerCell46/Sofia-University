@@ -19,11 +19,16 @@
 
 .home-title {
     font-family: 'IBM Plex Mono', 'Courier New', monospace;
-    font-size: 36px;
+    font-size: 42px;
     font-weight: 700;
     letter-spacing: -0.5px;
     color: var(--text-primary);
     text-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* The green glow reads as a muddy halo on the light background */
+[data-theme="light"] .home-title {
+    text-shadow: none;
 }
 
 .home-title .logo-bracket {
@@ -31,7 +36,7 @@
 }
 
 .home-subtitle {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.5px;
     color: var(--accent);
@@ -39,9 +44,68 @@
 
 .home-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
     animation: loadSlideUp 0.5s ease 0.15s both;
+}
+
+/* Collapse to a single column on narrow screens */
+@media (max-width: 640px) {
+    .home-grid {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+    }
+}
+
+/* ===== Placeholder / skeleton card ===== */
+.view-card--skeleton {
+    border: 2px dashed rgba(149, 117, 205, 0.45);
+    background: var(--bg-surface);
+    box-shadow: none;
+    pointer-events: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.skeleton-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 80%;
+}
+
+.skeleton-line {
+    height: 16px;
+    border-radius: 6px;
+    background: linear-gradient(90deg,
+            rgba(149, 117, 205, 0.08) 0%,
+            rgba(149, 117, 205, 0.45) 50%,
+            rgba(149, 117, 205, 0.08) 100%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 3s ease-in-out infinite;
+}
+
+.skeleton-line--title {
+    height: 26px;
+    width: 55%;
+    margin-bottom: 6px;
+}
+
+.skeleton-line--short {
+    width: 45%;
+}
+
+@keyframes skeletonShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 /* Scale-up for large displays */
@@ -53,15 +117,15 @@
     }
 
     .home-title {
-        font-size: 44px;
+        font-size: 50px;
     }
 
     .home-subtitle {
-        font-size: 17px;
+        font-size: 18px;
     }
 
     .home-grid {
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        max-width: 900px;
         gap: 28px;
     }
 }
@@ -82,7 +146,7 @@
     }
 
     .home-grid {
-        grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+        max-width: 1120px;
         gap: 36px;
     }
 }
@@ -103,7 +167,7 @@
     }
 
     .home-grid {
-        grid-template-columns: repeat(auto-fit, minmax(620px, 1fr));
+        max-width: 1440px;
         gap: 48px;
     }
 }
@@ -124,7 +188,7 @@
     }
 
     .home-grid {
-        grid-template-columns: repeat(auto-fit, minmax(720px, 1fr));
+        max-width: 1760px;
         gap: 56px;
     }
 }

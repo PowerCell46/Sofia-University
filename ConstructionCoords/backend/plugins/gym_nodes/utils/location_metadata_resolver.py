@@ -12,7 +12,7 @@ from openai import OpenAI
 class LocationMetadataResolver:
     def __init__(self):
         self._client: OpenAI = OpenAI(api_key=os.getenv("OPEN_AI_API_KEY"))
-        self._geolocator: Nominatim = Nominatim(user_agent="construction-coords")  # Nominatim is the geocoding engine built on top of OpenStreetMap data.
+        self._geolocator: Nominatim = Nominatim(user_agent="gym-nodes")  # Nominatim is the geocoding engine built on top of OpenStreetMap data.
         resources_dir = Path(__file__).resolve().parent.parent / "resources"
         self._prompt_without_geocode: str = (resources_dir / "prompt_without_geocode.xml").read_text(encoding="utf-8")
         self._prompt_with_geocode: str = (resources_dir / "prompt_with_geocode.xml").read_text(encoding="utf-8")
@@ -48,8 +48,6 @@ class LocationMetadataResolver:
 
                 gym_node.name = parsed_open_ai_response.get("name") or "N/A"
                 gym_node.name_confidence = parsed_open_ai_response.get("name_confidence") or 0.0
-                gym_node.type = parsed_open_ai_response.get("type") or "N/A"
-                gym_node.visibility_level = parsed_open_ai_response.get("visibility_level") or "N/A"
                 gym_node.description = parsed_open_ai_response.get("description") or "N/A"
             except JSONDecodeError:
                 print(f"OpenAI invalid response format. Couldn't parse the JSON!\n'''\n{open_ai_response}\n'''")
@@ -95,22 +93,22 @@ class LocationMetadataResolver:
     @staticmethod
     def construct_system_instructions(reverse_geocode_response: str | None) -> str:
         base = (
-                "You are a strict geospatial annotator for JSON objects. You assign concise English "
-                "location names, calibrated confidence scores, feature types, visibility levels, and "
-                "brief contextual descriptions, and return a validated JSON object that conforms "
-                "exactly to the schema specified by the user."
-            )
+            "You are a strict geospatial annotator for JSON objects. You assign concise English "
+            "location names, calibrated confidence scores, feature types, visibility levels, and "
+            "brief contextual descriptions, and return a validated JSON object that conforms "
+            "exactly to the schema specified by the user."
+        )
         if reverse_geocode_response:
             addendum = (
-                    " You are provided with an authoritative reverse-geocoded address from OpenStreetMap, "
-                    "which you must treat as ground truth and prioritize over any prior knowledge. "
-                    "Avoid any inference that exceeds what the provided address and coordinates support."
-                )
+                " You are provided with an authoritative reverse-geocoded address from OpenStreetMap, "
+                "which you must treat as ground truth and prioritize over any prior knowledge. "
+                "Avoid any inference that exceeds what the provided address and coordinates support."
+            )
         else:
             addendum = (
-                    " Based solely on the coordinates provided, avoid any inference that exceeds "
-                    "your actual certainty."
-                )
+                " Based solely on the coordinates provided, avoid any inference that exceeds "
+                "your actual certainty."
+            )
         return base + addendum
 
     @staticmethod

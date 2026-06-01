@@ -15,8 +15,8 @@
         restriction — points may be anywhere on Earth.
     </context>
     <your_task>
-        For each feature, assign "name", "name_confidence", "type", "visibility_level", and
-        "description" fields based on the point's coordinates.
+        For each feature, assign "name", "name_confidence", and "description" fields based on
+        the point's coordinates.
     </your_task>
     <name_rules>
         - Language: English.
@@ -35,27 +35,6 @@
         Without verified address data, lean toward the lower end of the applicable band —
         coordinate-only inference is noisy. USE "N/A" ONLY IF "name_confidence" IS 0.0.
     </confidence_rules>
-    <type_rules>
-        - Language: English.
-        - Maximum 20 characters.
-        - Choose the single best-fitting value from this list:
-            "building", "park", "road feature", "utility", "landmark",
-            "incident", "service point", "natural feature", "residential area",
-            "commercial area", "transport hub", "other".
-        - Use "other" if none of the above fits.
-        - If you cannot identify the location at all, use "N/A".
-    </type_rules>
-    <visibility_level_rules>
-        - Assign exactly one of: "public", "internal", "restricted".
-        - "public":     the feature is a publicly accessible place (park, street, square,
-                        public building, landmark, natural area).
-        - "internal":   the feature is inside a private or semi-private compound that is
-                        accessible only to employees, residents, or members
-                        (office campus, residential complex, university grounds).
-        - "restricted": the feature is inside a secured or sensitive area with controlled
-                        access (military site, industrial facility, critical infrastructure).
-        - When in doubt, prefer "public".
-    </visibility_level_rules>
     <description_rules>
         - Language: English.
         - Maximum 75 characters (including spaces).
@@ -69,13 +48,13 @@
             example 2: """ { "longitude": 23.3197, "latitude": 42.7129 } """
             example 3: """ { "longitude": 23.3367, "latitude": 42.6928 } """
         output:
-            example 1: """ { "name": "Around NDK, Sofia", "name_confidence": 0.82, "type": "landmark", "visibility_level": "public", "description": "Plaza area near the National Palace of Culture, central Sofia." } """
-            example 2: """ { "name": "Sofia Central Station", "name_confidence": 0.93, "type": "transport hub", "visibility_level": "public", "description": "Main railway terminal in Sofia, serving intercity and regional lines." } """
-            example 3: """ { "name": "Military Medical Academy", "name_confidence": 0.87, "type": "building", "visibility_level": "restricted", "description": "Military hospital complex with controlled access, central Sofia." } """
+            example 1: """ { "name": "Around NDK, Sofia", "name_confidence": 0.82, "description": "Plaza area near the National Palace of Culture, central Sofia." } """
+            example 2: """ { "name": "Sofia Central Station", "name_confidence": 0.93, "description": "Main railway terminal in Sofia, serving intercity and regional lines." } """
+            example 3: """ { "name": "Military Medical Academy", "name_confidence": 0.87, "description": "Military hospital complex with controlled access, central Sofia." } """
     </case_example>
     <expected_output_format>
         Return ONLY a JSON object with exactly these fields:
-        "name", "name_confidence", "type", "visibility_level", "description".
+        "name", "name_confidence", "description".
         DO NOT include: free text, Markdown code fences, questions, confirmations, comments,
         or trailing commas. The output will be parsed directly. THIS IS THE MOST IMPORTANT RULE.
     </expected_output_format>
