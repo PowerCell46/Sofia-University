@@ -1,0 +1,37 @@
+.view-container {
+    width: 100%;
+    max-width: 400px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.view-container.view-hidden {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* Scale-up for large displays */
+@media (min-width: 1920px) {
+    .view-container {
+        max-width: 460px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .view-container {
+        max-width: 580px;
+    }
+}
+
+@media (min-width: 3440px) {
+    .view-container {
+        max-width: 740px;
+    }
+}
+
+@media (min-width: 3840px) {
+    .view-container {
+        max-width: 900px;
+    }
+}

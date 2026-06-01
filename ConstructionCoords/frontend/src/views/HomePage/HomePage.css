@@ -1,0 +1,130 @@
+.home-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 32px 80px;
+}
+
+.home-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    animation: loadSlideDown 0.5s ease both;
+}
+
+.home-title {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.home-title .logo-bracket {
+    color: var(--accent);
+}
+
+.home-subtitle {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    animation: loadSlideUp 0.5s ease 0.15s both;
+}
+
+/* Scale-up for large displays */
+@media (min-width: 1920px) {
+    .home-main {
+        max-width: 1480px;
+        gap: 48px;
+        padding: 80px 40px 96px;
+    }
+
+    .home-title {
+        font-size: 44px;
+    }
+
+    .home-subtitle {
+        font-size: 17px;
+    }
+
+    .home-grid {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 28px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .home-main {
+        max-width: 1960px;
+        gap: 64px;
+        padding: 112px 56px 128px;
+    }
+
+    .home-title {
+        font-size: 56px;
+    }
+
+    .home-subtitle {
+        font-size: 21px;
+    }
+
+    .home-grid {
+        grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+        gap: 36px;
+    }
+}
+
+@media (min-width: 3440px) {
+    .home-main {
+        max-width: 2680px;
+        gap: 80px;
+        padding: 144px 72px 160px;
+    }
+
+    .home-title {
+        font-size: 72px;
+    }
+
+    .home-subtitle {
+        font-size: 26px;
+    }
+
+    .home-grid {
+        grid-template-columns: repeat(auto-fit, minmax(620px, 1fr));
+        gap: 48px;
+    }
+}
+
+@media (min-width: 3840px) {
+    .home-main {
+        max-width: 3200px;
+        gap: 96px;
+        padding: 176px 96px 192px;
+    }
+
+    .home-title {
+        font-size: 88px;
+    }
+
+    .home-subtitle {
+        font-size: 30px;
+    }
+
+    .home-grid {
+        grid-template-columns: repeat(auto-fit, minmax(720px, 1fr));
+        gap: 56px;
+    }
+}

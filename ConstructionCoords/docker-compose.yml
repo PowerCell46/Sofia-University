@@ -55,19 +55,6 @@ services:
       backend:
         condition: service_healthy
 
-  original_frontend:
-    build:
-      context: ./original_frontend
-      dockerfile: Dockerfile
-    container_name: original_construction_coords_frontend
-    ports:
-      - "8070:80"
-    environment:
-      VITE_API_BASE_URL: ${VITE_API_BASE_URL}
-    depends_on:
-      backend:
-        condition: service_healthy
-
   caddy:
     image: caddy:2
     container_name: construction_coords_caddy
@@ -85,7 +72,6 @@ services:
     depends_on:
       - backend
       - frontend
-      - original_frontend
 
 volumes:
   construction_coords_db_vol:

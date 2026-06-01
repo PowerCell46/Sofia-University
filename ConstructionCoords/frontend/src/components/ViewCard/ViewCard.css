@@ -1,0 +1,201 @@
+.view-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 240px;
+    padding: 32px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text-primary);
+    background:
+        radial-gradient(circle at 80% 110%, var(--card-accent-glow) 0%, transparent 55%),
+        linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-primary) 100%);
+    box-shadow: 0 0 0 transparent;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.view-card--image {
+    background-image:
+        linear-gradient(135deg, rgba(10, 15, 10, 0.55) 0%, rgba(10, 15, 10, 0.35) 100%),
+        var(--card-image);
+    background-size: cover;
+    background-position: center;
+    color: #E8F2E5;
+}
+
+.view-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, var(--card-accent-glow) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+
+.view-card__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 75%;
+}
+
+.view-card__title {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.view-card__description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.view-card--image .view-card__description {
+    color: rgba(232, 242, 229, 0.85);
+}
+
+.view-card__arrow {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--card-accent);
+    border-radius: 50%;
+    color: var(--card-accent);
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+@media (hover: hover) {
+    .view-card:hover {
+        border-color: var(--card-accent);
+        box-shadow: 0 12px 32px var(--card-accent-glow);
+        transform: translateY(-4px);
+    }
+
+    .view-card:hover .view-card__overlay {
+        opacity: 1;
+    }
+
+    .view-card:hover .view-card__arrow {
+        background-color: var(--card-accent);
+        color: var(--bg-primary);
+        transform: translateX(4px);
+    }
+}
+
+.view-card:active {
+    transform: translateY(-1px);
+}
+
+/* Scale-up for large displays */
+@media (min-width: 1920px) {
+    .view-card {
+        min-height: 280px;
+        padding: 40px;
+    }
+
+    .view-card__title {
+        font-size: 30px;
+    }
+
+    .view-card__description {
+        font-size: 16px;
+    }
+
+    .view-card__arrow {
+        width: 52px;
+        height: 52px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .view-card {
+        min-height: 340px;
+        padding: 52px;
+        border-radius: 14px;
+    }
+
+    .view-card__title {
+        font-size: 38px;
+    }
+
+    .view-card__description {
+        font-size: 20px;
+    }
+
+    .view-card__arrow {
+        width: 66px;
+        height: 66px;
+        bottom: 36px;
+        right: 36px;
+    }
+
+    .view-card__arrow svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (min-width: 3440px) {
+    .view-card {
+        min-height: 420px;
+        padding: 64px;
+    }
+
+    .view-card__title {
+        font-size: 48px;
+    }
+
+    .view-card__description {
+        font-size: 24px;
+    }
+
+    .view-card__arrow {
+        width: 84px;
+        height: 84px;
+    }
+
+    .view-card__arrow svg {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (min-width: 3840px) {
+    .view-card {
+        min-height: 480px;
+        padding: 76px;
+    }
+
+    .view-card__title {
+        font-size: 58px;
+    }
+
+    .view-card__description {
+        font-size: 28px;
+    }
+
+    .view-card__arrow {
+        width: 100px;
+        height: 100px;
+    }
+
+    .view-card__arrow svg {
+        width: 44px;
+        height: 44px;
+    }
+}

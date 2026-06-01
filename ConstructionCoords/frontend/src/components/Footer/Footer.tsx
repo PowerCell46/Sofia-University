@@ -1,19 +1,23 @@
-import { SUBMITTED_POIS_URL } from "../../api/constants";
+import type { FooterConfig } from "../../views/types";
 import "./Footer.css";
 
 
-function Footer() {
+function Footer({ label, suffix, link }: FooterConfig) {
     return (
         <footer className="footer">
-            GeoAI &mdash;{" "}
-            <a
-                className="footer__link"
-                href={SUBMITTED_POIS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Submitted POIs
-            </a>
+            {label} &mdash;{" "}
+            {link ? (
+                <a
+                    className="footer__link"
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {link.label}
+                </a>
+            ) : (
+                suffix
+            )}
         </footer>
     );
 }

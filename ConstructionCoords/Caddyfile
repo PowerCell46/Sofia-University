@@ -5,7 +5,3 @@
 app.46.225.163.131.nip.io {
     reverse_proxy frontend:80
 }
-
-legacy.46.225.163.131.nip.io {
-    reverse_proxy original_frontend:80
-}

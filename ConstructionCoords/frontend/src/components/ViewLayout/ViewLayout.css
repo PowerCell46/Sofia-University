@@ -1,0 +1,42 @@
+.app-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    padding-top: 28px;
+    padding-bottom: 48px;
+}
+
+/* Scale-up for large displays */
+@media (min-width: 1920px) {
+    .app-main {
+        padding: 28px;
+        padding-top: 34px;
+        padding-bottom: 56px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .app-main {
+        padding: 40px;
+        padding-top: 48px;
+        padding-bottom: 76px;
+    }
+}
+
+@media (min-width: 3440px) {
+    .app-main {
+        padding: 54px;
+        padding-top: 64px;
+        padding-bottom: 96px;
+    }
+}
+
+@media (min-width: 3840px) {
+    .app-main {
+        padding: 68px;
+        padding-top: 76px;
+        padding-bottom: 118px;
+    }
+}

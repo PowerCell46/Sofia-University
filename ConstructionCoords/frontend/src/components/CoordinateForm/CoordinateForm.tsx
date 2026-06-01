@@ -3,6 +3,8 @@ import "./CoordinateForm.css";
 
 
 interface CoordinateFormProps {
+    logoText: string;
+    subtitle: string;
     onSubmit: (lat: number, lon: number) => Promise<void>;
     autoFocus?: boolean;
 }
@@ -59,7 +61,7 @@ function parseCoordinates(input: string): ParseResult {
     return { ok: true, lat, lon };
 }
 
-function CoordinateForm({ onSubmit, autoFocus }: CoordinateFormProps) {
+function CoordinateForm({ logoText, subtitle, onSubmit, autoFocus }: CoordinateFormProps) {
     const [value, setValue] = useState("");
     const [error, setError] = useState("");
     const [shaking, setShaking] = useState(false);
@@ -120,11 +122,11 @@ function CoordinateForm({ onSubmit, autoFocus }: CoordinateFormProps) {
         <div className="coordinate-form">
             <div className="form-logo load-slide-down">
                 <span className="logo-bracket">[</span>
-                <span className="logo-text">GeoAI</span>
+                <span className="logo-text">{logoText}</span>
                 <span className="logo-bracket">]</span>
             </div>
             <p className="form-subtitle load-slide-down-delay">
-                Geospatial Coordinate Logger
+                {subtitle}
             </p>
 
             <div className="load-slide-up">
