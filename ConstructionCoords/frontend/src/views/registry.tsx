@@ -33,7 +33,7 @@ export const VIEWS: ViewDefinition[] = [
         accent: GYM_NODES_ACCENT,
         card: {
             title: "Gym Nodes",
-            description: "Map and manage gym network nodes. Coming soon.",
+            description: "Log gym network node coordinates in the field.",
         },
         element: <GymNodesView />,
     },
