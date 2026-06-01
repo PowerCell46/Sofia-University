@@ -19,10 +19,10 @@ function HomePage() {
                 <header className="home-header">
                     <h1 className="home-title">
                         <span className="logo-bracket">[</span>
-                        <span className="logo-text">Workspaces</span>
+                        <span className="logo-text">SU·crwdsrc</span>
                         <span className="logo-bracket">]</span>
                     </h1>
-                    <p className="home-subtitle">Select a tool to get started.</p>
+                    <p className="home-subtitle">Crowdsourcing GIS portal · Select a tool below.</p>
                 </header>
 
                 <section className="home-grid">
@@ -31,10 +31,15 @@ function HomePage() {
                     ))}
 
                     <div className="view-card view-card--skeleton" aria-hidden="true">
-                        <div className="skeleton-lines">
-                            <span className="skeleton-line skeleton-line--title" />
-                            <span className="skeleton-line" />
-                            <span className="skeleton-line skeleton-line--short" />
+                        <div className="view-card__content">
+                            <h2 className="view-card__title skeleton-title">
+                                <span className="skeleton-title__full">Constructing...</span>
+                                <span className="skeleton-title__short">TODO:</span>
+                            </h2>
+                            <div className="skeleton-lines">
+                                <span className="skeleton-line" />
+                                <span className="skeleton-line skeleton-line--short" />
+                            </div>
                         </div>
                     </div>
                 </section>

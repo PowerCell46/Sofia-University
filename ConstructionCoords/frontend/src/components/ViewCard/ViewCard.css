@@ -3,8 +3,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    min-height: 240px;
-    padding: 32px;
+    min-height: 264px;
+    padding: 36px;
     border: 2px solid var(--card-accent-glow);
     border-radius: 10px;
     overflow: hidden;
@@ -14,7 +14,7 @@
         radial-gradient(circle at 80% 110%, var(--card-accent-glow) 0%, transparent 55%),
         linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-primary) 100%);
     box-shadow: 0 0 0 transparent;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 .view-card--image {
@@ -31,7 +31,7 @@
     inset: 0;
     background: linear-gradient(120deg, var(--card-accent-glow) 0%, transparent 60%);
     opacity: 0;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.4s ease;
     pointer-events: none;
 }
 
@@ -46,14 +46,14 @@
 
 .view-card__title {
     font-family: 'IBM Plex Mono', 'Courier New', monospace;
-    font-size: 26px;
+    font-size: 25px;
     font-weight: 700;
     letter-spacing: -0.5px;
     line-height: 1.2;
 }
 
 .view-card__description {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 1.5;
     color: var(--text-secondary);
@@ -76,7 +76,7 @@
     border: 2px solid var(--card-accent);
     border-radius: 50%;
     color: var(--card-accent);
-    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    transition: background-color 0.4s ease, color 0.4s ease, transform 0.4s ease;
 }
 
 @media (hover: hover) {

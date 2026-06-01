@@ -20,7 +20,7 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 
-app: FastAPI = FastAPI(title="ConstructionCoords Backend application")
+app: FastAPI = FastAPI(title="Sofia University Crowdsourcing GIS Portal")
 
 app.add_middleware(
     CORSMiddleware,

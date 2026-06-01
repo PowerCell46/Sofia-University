@@ -9,6 +9,23 @@
     padding: 64px 32px 80px;
 }
 
+/* Short viewports (e.g. 1366x768 laptops) — trim so the grid fits without scrolling */
+@media (max-height: 800px) {
+    .home-main {
+        gap: 36px;
+        padding: 32px 32px 40px;
+    }
+
+    .home-title {
+        font-size: 34px;
+    }
+
+    .home-grid .view-card {
+        min-height: 196px;
+        padding: 28px;
+    }
+}
+
 .home-header {
     display: flex;
     flex-direction: column;
@@ -58,6 +75,19 @@
         grid-template-columns: 1fr;
         max-width: 440px;
     }
+
+    /* "Constructing..." overflows narrow cards — use a short label instead */
+    .skeleton-title__full {
+        display: none;
+    }
+
+    .skeleton-title__short {
+        display: inline;
+    }
+}
+
+.skeleton-title__short {
+    display: none;
 }
 
 /* ===== Placeholder / skeleton card ===== */
@@ -66,15 +96,27 @@
     background: var(--bg-surface);
     box-shadow: none;
     pointer-events: none;
-    justify-content: center;
-    align-items: center;
+}
+
+.skeleton-title {
+    background: linear-gradient(90deg,
+            rgba(149, 117, 205, 0.35) 0%,
+            rgba(149, 117, 205, 0.95) 50%,
+            rgba(149, 117, 205, 0.35) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: skeletonShimmer 3s ease-in-out infinite;
 }
 
 .skeleton-lines {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    width: 80%;
+    width: 100%;
+    margin-top: 4px;
 }
 
 .skeleton-line {
@@ -88,14 +130,8 @@
     animation: skeletonShimmer 3s ease-in-out infinite;
 }
 
-.skeleton-line--title {
-    height: 26px;
-    width: 55%;
-    margin-bottom: 6px;
-}
-
 .skeleton-line--short {
-    width: 45%;
+    width: 60%;
 }
 
 @keyframes skeletonShimmer {
@@ -125,7 +161,7 @@
     }
 
     .home-grid {
-        max-width: 900px;
+        max-width: 1040px;
         gap: 28px;
     }
 }
@@ -146,7 +182,7 @@
     }
 
     .home-grid {
-        max-width: 1120px;
+        max-width: 1320px;
         gap: 36px;
     }
 }
@@ -188,7 +224,7 @@
     }
 
     .home-grid {
-        max-width: 1760px;
+        max-width: 2040px;
         gap: 56px;
     }
 }
