@@ -1,11 +1,15 @@
 import CautionStripe from "../../components/CautionStripe/CautionStripe";
 import ThemeToggle from "../../components/ThemeToggle/ThemeToggle";
 import ViewCard from "../../components/ViewCard/ViewCard";
+import { HOME_ACCENT } from "../accents";
+import { useViewAccent } from "../useViewAccent";
 import { VIEWS } from "../registry";
 import "./HomePage.css";
 
 
 function HomePage() {
+    useViewAccent(HOME_ACCENT);
+
     return (
         <>
             <CautionStripe />

@@ -7,7 +7,7 @@ const ACCENT_VARIABLE_MAP: Record<keyof ViewAccent, string[]> = {
     accent: ["--accent"],
     accentDark: ["--accent-dark"],
     accentHover: ["--accent-hover"],
-    accentGlow: ["--accent-glow", "--accent-glow-strong"],
+    accentGlow: ["--accent-glow", "--accent-glow-strong", "--border-color"],
     accentGlowFaint: ["--accent-glow-faint", "--toggle-bg"],
 };
 

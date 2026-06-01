@@ -16,7 +16,7 @@ function ConstructionCoordsView() {
             <CoordinateFormView
                 logoText="CC"
                 subtitle="Construction Coordinate Logger"
-                endpoint={API_ENDPOINTS.CONSTRUCTION_LOCATION}
+                endpoint={API_ENDPOINTS.CONSTRUCTION_COORDS}
             />
         </ViewLayout>
     );

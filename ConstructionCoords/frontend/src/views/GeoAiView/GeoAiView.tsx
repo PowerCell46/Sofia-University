@@ -19,7 +19,7 @@ function GeoAiView() {
             <CoordinateFormView
                 logoText="GeoAI"
                 subtitle="Geospatial Coordinate Logger"
-                endpoint={API_ENDPOINTS.GEO_AI_LOCATION}
+                endpoint={API_ENDPOINTS.GEO_AI}
             />
         </ViewLayout>
     );

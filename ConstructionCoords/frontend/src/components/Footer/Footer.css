@@ -9,7 +9,7 @@
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--text-footer);
+    color: var(--accent);
     font-family: 'IBM Plex Mono', 'Courier New', monospace;
 }
 

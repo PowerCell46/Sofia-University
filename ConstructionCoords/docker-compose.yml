@@ -50,7 +50,9 @@ services:
     ports:
       - "8080:80"
     environment:
-      VITE_API_BASE_URL: ${VITE_API_BASE_URL}
+      VITE_CONSTRUCTION_COORDS_URL: ${VITE_CONSTRUCTION_COORDS_URL}
+      VITE_GEO_AI_URL: ${VITE_GEO_AI_URL}
+      VITE_GYM_NODES_URL: ${VITE_GYM_NODES_URL}
     depends_on:
       backend:
         condition: service_healthy

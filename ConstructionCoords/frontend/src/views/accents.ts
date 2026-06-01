@@ -1,6 +1,14 @@
 import type { ViewAccent } from "./types";
 
 
+export const HOME_ACCENT: ViewAccent = {
+    accent: "#E5484D",
+    accentDark: "#C13438",
+    accentHover: "#F26669",
+    accentGlow: "rgba(229, 72, 77, 0.4)",
+    accentGlowFaint: "rgba(229, 72, 77, 0.05)",
+};
+
 export const CONSTRUCTION_ACCENT: ViewAccent = {
     accent: "#F5A623",
     accentDark: "#D98E1C",

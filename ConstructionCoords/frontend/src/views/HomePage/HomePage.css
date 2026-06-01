@@ -34,7 +34,7 @@
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 0.5px;
-    color: var(--text-secondary);
+    color: var(--accent);
 }
 
 .home-grid {
