@@ -1,17 +1,17 @@
 services:
   db_postgres:
     image: postgres:16-alpine
-    container_name: construction_coords_db
+    container_name: su_crwdsrc_db
     environment:
-      POSTGRES_DB: construction_coords
+      POSTGRES_DB: su_crwdsrc_db
       POSTGRES_USER: ${POSTGRES_SQL_USERNAME}
       POSTGRES_PASSWORD: ${POSTGRES_SQL_PASSWORD}
     volumes:
-      - construction_coords_db_vol:/var/lib/postgresql/data
+      - su_crwdsrc_db_vol:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_SQL_USERNAME} -d construction_coords"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_SQL_USERNAME} -d su_crwdsrc_db"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -20,7 +20,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: construction_coords_backend
+    container_name: su_crwdsrc_backend
     expose:
       - "8000"
     dns:
@@ -46,7 +46,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: construction_coords_frontend
+    container_name: su_crwdsrc_frontend
     ports:
       - "8080:80"
     environment:
@@ -59,7 +59,7 @@ services:
 
   caddy:
     image: caddy:2
-    container_name: construction_coords_caddy
+    container_name: su_crwdsrc_caddy
     restart: unless-stopped
     dns:
       - 8.8.8.8
@@ -76,6 +76,6 @@ services:
       - frontend
 
 volumes:
-  construction_coords_db_vol:
+  su_crwdsrc_db_vol:
   caddy_data:
   caddy_config:
