@@ -1,0 +1,184 @@
+.card {
+    border-radius: 0.4rem;
+    margin-left: -0.5vw;
+    width: 65vw;
+    background-color: rgba(255, 255, 255, 0.15); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 4px 18px 1px rgba(0,0,0,0.75);
+}
+
+
+.dropdown-section {
+    background-color: transparent;
+}
+
+
+.fa-arrow-left {
+    position: absolute;
+    color: whitesmoke;
+    left: 14.3%;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+
+.fa-arrow-right {
+    position: absolute;
+    color: whitesmoke;
+    left: 83.5%;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+
+#dropdown-i {
+    margin-top: 2.8vh;
+    font-size: 1rem;
+}
+
+
+.dropdown-section h5 {
+    font-size: 1rem;
+    margin-top: 3vh;
+    text-align: center;
+}
+
+
+.hidden p {
+    text-align: center;
+}
+
+
+.card .images {
+    margin-top: 5vh;
+    height: 50vh;
+    width: 30vw;
+    margin-bottom: 0vh;
+}
+
+
+iframe {
+    margin-bottom: 5vh;
+    scale: .8; 
+    opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: entry; 
+    border-radius: 0.2rem;
+    box-shadow: 4px 4px 18px 1px rgba(0,0,0,0.75);
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+.fade-in-animation {
+    animation: fadeIn 2.5s;
+}
+
+
+@media screen and (max-width: 2560px) {
+    .dropdown-section h5 {
+        font-size: 1.8rem;
+    }
+
+    #dropdown-i {
+        font-size: 1.8rem;
+    }
+
+    .fa-arrow-left, .fa-arrow-right {
+        font-size: 2rem;
+    }
+
+    iframe {
+        width: 1120px;
+        height: 630px;
+    }
+
+}
+
+
+@media screen and (max-width: 1920px) {
+    .dropdown-section h5 {
+        font-size: 1.8rem;
+    }
+
+    #dropdown-i {
+        font-size: 1.8rem;
+    }
+
+    .fa-arrow-left, .fa-arrow-right {
+        font-size: 2rem;
+    }
+
+    iframe {
+        width: 840px;
+        height: 472.5px;
+    }
+}
+
+
+@media screen and (max-width: 1900px) {
+    .dropdown-section h5 {
+        font-size: 1.2rem;
+    }
+
+    #dropdown-i {
+        font-size: 1.2rem;
+    }
+
+    .fa-arrow-left, .fa-arrow-right {
+        font-size: 1.6rem;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    .card .images {
+        margin-top: 5vh;
+        height: 30vh;
+        width: 25vw;
+        margin-bottom: 0vh;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .card .images {
+        margin-top: 5vh;
+        height: 30vh;
+        width: 35vw;
+        margin-bottom: 0vh;
+    }
+
+    .fa-arrow-left {
+        position: absolute;
+        color: whitesmoke;
+        left: 12.5%;
+        font-size: 1.3rem;
+        cursor: pointer;
+    }
+    
+    .fa-arrow-right {
+        position: absolute;
+        color: whitesmoke;
+        left: 84.2%;
+        font-size: 1.3rem;
+        cursor: pointer;
+    }
+
+    .hidden p {
+        font-size: 0.8rem;
+    }
+
+    iframe {
+        width: 480px;
+        height: 300px;
+    }
+}

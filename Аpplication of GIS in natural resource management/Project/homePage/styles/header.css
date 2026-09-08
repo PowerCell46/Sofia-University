@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+
+header {
+    margin-top: 10vh;
+}
+
+
+header h1 {
+    text-align: center;
+    position: absolute;
+    color: whitesmoke;
+    font-size: 2rem;
+    letter-spacing: 0.15rem;
+    left: 50%;
+    top: 12.5vh;
+    transform: translateX(-50%);
+    text-shadow: 4px -2px 3px rgba(0,0,0,0.59);
+    animation: tracking-out-contract 14s cubic-bezier(0.550, 0.085, 0.680, 0.530) both infinite;
+}
+
+
+header {
+    background-image: url('../images/88364ac9-3daa-4eb6-a4ba-7d8ce843e15b.jpg');
+    /* width: 100vw; */
+    height: 65vh;
+    background-size: cover;
+    animation-name: bgPositionAnim;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes bgPositionAnim {
+    0% {
+        background-position: center calc(100%);
+    }
+    100% {
+        background-position: center;
+    }
+}
+
+
+@keyframes tracking-out-contract {
+    0%, 57.14% { /* Up to ~8s of the 14s cycle */
+        opacity: 1;
+        letter-spacing: normal; /* Assuming normal letter-spacing initially */
+    }
+    28.57%, 57.14% { /* Starts changing around ~4s into the 14s cycle */
+        opacity: 1; /* Maintains full opacity until 8s */
+    }
+    100% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+}
+
+
+@media screen and (max-width: 2560px) {
+    header h1 {
+        font-size: 4.5rem;
+    }
+}
+
+
+@media screen and (max-width: 1920px) {
+    header h1 {
+        font-size: 3.5rem;
+    }
+}
+
+
+@media screen and (max-width: 1900px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+}

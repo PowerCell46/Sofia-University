@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap');
+
+
+nav {
+    width: 100vw;
+    height: 10vh;
+    background-image: linear-gradient(to right top, #208c00, #429e03, #5fb005, #7bc20b, #97d410);    
+    position: fixed;
+    top: 0; 
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+
+nav li {
+    list-style: none;
+    cursor: pointer;
+    font-family: 'Protest Riot', sans-serif;
+    text-shadow: 5px 0px 7px rgba(0,0,0,0.68);
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    animation: float 4s ease-in-out infinite;
+    color: whitesmoke;
+    transform: translatey(0px);
+}
+
+
+nav li a {
+    text-decoration: none;
+    color: whitesmoke;
+    transition: all 0.4s ease-in-out;
+}
+
+
+nav li a:before {
+    content: "";
+    width: 0;
+    height: 1.5px;
+    bottom: 5px;
+    left: 0;
+    bottom: -6px;
+    z-index: 0;
+    position: absolute;
+    background: #2868bd;
+    transition: all 0.4s ease-in-out;
+}
+
+
+nav li a:hover {
+    text-decoration: underline;
+    background-position: 0%;
+}
+
+
+nav li a:hover:before {
+    width: 100%;
+}
+
+
+nav li a img {
+    height: 10vh;
+}
+
+
+#home-page-img:hover:before {
+    content: none;
+    width: 0;
+}
+
+
+nav li div img {
+    border-radius: 10%;
+    height: 5vh;
+    width: calc(5vh * 1.02);
+}
+
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-0.2rem);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}
+
+
+@media screen and (max-width: 2560px) {
+    nav li {
+        font-size: 1.6rem;
+    }
+}
+
+
+@media screen and (max-width: 1920px) {
+    nav li {
+        font-size: 1.4rem;
+    }
+
+    nav li a:before {
+        content: "";
+        width: 0;
+        height: 2.5px;
+        bottom: 5px;
+        left: 0;
+        bottom: -8px;
+    }
+}
+
+
+@media screen and (max-width: 1900px) {
+    nav li {
+        font-size: 1rem;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    nav li {
+        font-size: 0.7rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+}

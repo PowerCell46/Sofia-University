@@ -1,0 +1,10 @@
+
+@import url('../../common/styles/reset.css');
+
+@import url('../../common/styles/navigation.css');
+
+@import url('./header.css'); 
+
+@import url('../../common/styles/main.css');
+
+@import url('../../common/styles/footer.css');

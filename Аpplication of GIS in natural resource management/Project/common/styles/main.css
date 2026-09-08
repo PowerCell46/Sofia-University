@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+
+main {
+    background-color:#3b3c36;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 7.5vh;
+}
+
+
+.dropdown-section {
+    padding: 2.5vh;
+    background-color: #3b3c36;
+    color: whitesmoke;
+    text-shadow: 5px 0px 7px rgba(0,0,0,0.68);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 0.8rem;
+}
+
+
+.dropdown-section:first-child {
+    padding-top: 15vh;
+}
+
+
+.hidden {
+    padding-top: 2.5vh;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 1000ms ease-in-out, height 1000ms ease-in-out;
+    letter-spacing: 0.03rem;
+    line-height: 1.25;
+    width: 80%;
+}
+
+
+.hidden.active {
+    opacity: 1;
+    height: auto;
+}
+
+
+.shown {
+    display: flex;
+}
+
+
+.shown i {
+    margin-right: 1vw;
+    cursor: pointer;
+    animation: pulse 2.5s ease-in-out infinite;
+}
+
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+
+.images {
+    height: 60vh;
+    width: 35vw;
+    scale: .8; 
+    opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: entry; 
+    margin: 3vh 0;
+    border-radius: 0.4rem;
+    box-shadow: 1px 6px 16px 0px rgba(0,0,0,0.75);
+    transition: 600ms ease-in-out;
+}
+
+
+.images:hover {
+    transform: scale(1.1);
+}
+
+
+.images:first-child {
+    margin-top: 7.5vh;
+}
+
+
+@keyframes fade-in {
+    to {scale: 1; opacity: 1;}
+}
+
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #3b3c36;
+}
+
+
+.separator-container {
+    height: 40vh;
+    background-image: url('../images/Leonardo_Diffusion_XL_can_you_generate_me_an_image_showing_the_3.jpg');
+    background-size: cover;
+    animation-name: bgPositionAnim;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes bgPositionAnim {
+    0% {
+        background-position: center calc(100%);
+    }
+    100% {
+        background-position: center;
+    }
+}
+
+
+h1 {
+    margin-top: 13.5vh;
+    margin-bottom: 2.5vh;
+    font-size: 2.7rem;
+    color: whitesmoke;
+    font-family: 'Comfortaa', sans-serif;  
+    text-shadow: 5px 0px 7px rgba(0,0,0,0.68); 
+    letter-spacing: 0.15rem;
+}
+
+
+h2 {
+    width: 70%;
+    margin-top: 12.5vh;
+    margin-bottom: 4vh;
+    font-size: 1.3rem;
+    text-align: center;
+    color: whitesmoke;
+    font-family: 'Comfortaa', sans-serif;  
+    text-shadow: 5px 0px 7px rgba(0,0,0,0.68); 
+    letter-spacing: 0.15rem;
+    scale: .8; 
+    opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: entry; 
+}
+
+
+#download-course-work-img {
+    animation: rotate-scale-up-diag-1 10s ease-in-out infinite;
+    height: 20vh;
+    margin-top: 1vh;
+    margin-bottom: -10vh;
+}
+
+
+.download-course-work-heading-wrapper {
+    margin-top: 10vh;
+    height: 10vh;
+    display: grid;
+    place-items: center;
+}
+  
+
+.download-course-work-heading {
+    text-shadow: 5px 0px 7px rgba(0,0,0,0.68); 
+    letter-spacing: 0.15rem;
+    color: whitesmoke;
+    width: 25ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1.8em;
+}
+  
+
+@keyframes typing {
+    from {
+      width: 0
+    }
+}
+      
+
+@keyframes blink {
+    50% {
+      border-color: transparent
+    }
+}
+
+
+@-webkit-keyframes rotate-scale-up-diag-1{0%{-webkit-transform:scale(1) rotate3d(1,1,0,0deg);transform:scale(1) rotate3d(1,1,0,0deg)}50%{-webkit-transform:scale(2) rotate3d(1,1,0,-180deg);transform:scale(2) rotate3d(1,1,0,-180deg)}100%{-webkit-transform:scale(1) rotate3d(1,1,0,-360deg);transform:scale(1) rotate3d(1,1,0,-360deg)}}@keyframes rotate-scale-up-diag-1{0%{-webkit-transform:scale(1) rotate3d(1,1,0,0deg);transform:scale(1) rotate3d(1,1,0,0deg)}50%{-webkit-transform:scale(2) rotate3d(1,1,0,-180deg);transform:scale(2) rotate3d(1,1,0,-180deg)}100%{-webkit-transform:scale(1) rotate3d(1,1,0,-360deg);transform:scale(1) rotate3d(1,1,0,-360deg)}}
+
+
+@media screen and (max-width: 2560px) {
+    .dropdown-section {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    .download-course-work-heading {
+        font-size: 3rem;
+    }
+}
+
+
+@media screen and (max-width: 1920px) {
+    .download-course-work-heading {
+        font-size: 2.5rem;
+    }
+}
+
+
+@media screen and (max-width: 1900px) {
+    .dropdown-section {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    .images {
+        height: 35vh;
+        width: 28vw;
+        scale: .8; 
+        opacity: 0;
+        animation: fade-in linear forwards;
+        animation-timeline: view();
+        animation-range: entry; 
+        margin: 3vh 0;
+        border-radius: 0.4rem;
+        box-shadow: 1px 6px 16px 0px rgba(0,0,0,0.75);
+        transition: 600ms ease-in-out;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 7.5vh;
+    }
+
+    .images { 
+        height: 30vh;
+        width: 35vw;
+    }
+
+    .shown {
+        width: 80%;
+        gap: 0.5rem;
+    }
+
+    .shown h5 { 
+        font-size: 0.8rem;
+    }
+
+    .hidden {
+        font-size: 0.6rem;
+        text-align: center;
+    }
+
+    .shown i {
+        font-size: 0.8rem;
+    }
+}
